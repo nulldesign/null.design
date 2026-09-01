@@ -1,0 +1,23 @@
+id: ND-R02
+title: Computational Research in Secondary Education
+slug: computational-research-in-secondary-education
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  How advanced computational methods — neural forecasting, Monte Carlo
+  simulation, transformer classifiers, numerical mechanics — change the scale
+  and nature of inquiry available to secondary-school learners and their
+  teachers.
+questions:
+  - What problems become investigable by a sixteen-year-old when a research-grade pipeline fits in a browser tab?
+  - Which parts of a computational method must a learner build by hand to understand it?
+  - How is authorship attributed when a teacher, students and agents all contribute?
+  - What does a defensible model card look like at secondary level?
+outputs: [case studies, exemplars, protocols, curriculum]
+experiments: []
+projects: [ND-005, ND-006, ND-007]
+publication:
+  public_url: null
+  featured: true
+  published: "2026-09-01"

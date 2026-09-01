@@ -1,0 +1,43 @@
+id: ND-006
+title: Stock Forecast in the Browser
+slug: stock-forecast
+classification:
+  type: [RESEARCH, TEACHING]
+  practice: [data systems, software]
+status: complete
+visibility: public
+year: { started: 2026, ended: 2026 }
+summary: >-
+  A price forecaster that runs entirely in the browser: a two-layer LSTM,
+  geometric Brownian motion with Monte Carlo confidence bands, a decision-tree
+  regressor over engineered indicators, and a disagreement-widened ensemble.
+  Built as a research exemplar for a secondary-school research course.
+topics: [LSTM, Monte Carlo, TensorFlow.js, forecasting, secondary research]
+research_programs: [ND-R02]
+repositories:
+  - url: https://github.com/willieavendano/stock-forecast
+    role: canonical
+    visibility: public
+agents: [Builder]
+human_gates: []
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/stock-forecast
+  notes: >-
+    All 13 commits by the author. Course pages describe it as a student
+    research project; git shows no student authorship. Framing to be decided
+    (teacher-built exemplar vs. verified student contribution).
+  review_required: true
+  third_party: [TensorFlow.js, React, Recharts, Alpha Vantage, Yahoo Finance]
+  ai_coauthored: true
+publication:
+  case_study: false
+  public_url: null
+  featured: false
+  recommendation: FEATURE ONLY
+facts:
+  - { label: models, value: "4 (LSTM, GBM-MC, decision tree, ensemble)" }

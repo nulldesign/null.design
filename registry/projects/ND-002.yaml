@@ -1,0 +1,51 @@
+id: ND-002
+title: Qlass
+slug: qlass
+classification:
+  type: [FLAGSHIP, PRODUCT CANDIDATE]
+  practice: [learning environments, software, agentic systems]
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  Self-hostable, open-source learning management infrastructure (Next.js,
+  PostgreSQL, Prisma) with a teacher-gated agentic unit builder: plan → author →
+  review, every run logged to an audit table, nothing published without a
+  human. A candidate learning environment for Agentic Education.
+topics: [LMS, classroom, BYOK, audit log, human gate, open source]
+research_programs: [ND-R01]
+repositories:
+  - url: https://github.com/willieavendano/qlass-lms
+    role: canonical
+    visibility: public
+agents: [Builder, Critic]
+human_gates:
+  - teacher reviews and publishes every generated unit
+  - provider keys supplied by the instance owner (BYOK)
+commercial:
+  commissionable: true
+  product_candidate: true
+  revenue_model: "open source; hosted tier and connectors under evaluation (ROADMAP phase 4)"
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/qlass-lms
+  notes: >-
+    34 commits, 2026-06-04 → 2026-07-07; 26 carry Co-Authored-By: Claude
+    trailers. MIT licence. CI runs Prisma validate, typecheck, tests and a
+    production build against Postgres.
+  review_required: false
+  third_party: [Next.js, Prisma, NextAuth, Vercel AI SDK, Railway]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: true
+  recommendation: MIRROR UNDER NULL
+  order: 1
+  published: "2026-06-05"
+facts:
+  - { label: licence, value: MIT }
+  - { label: data models, value: "28 (Prisma)" }
+  - { label: test files, value: "8 (Vitest)" }
+  - { label: agent pipeline, value: "plan → author → review → teacher publish" }
+  - { label: audit table, value: AgentRun }

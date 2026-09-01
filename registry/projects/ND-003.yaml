@@ -1,0 +1,49 @@
+id: ND-003
+title: Atlas Curriculum Audit
+slug: atlas-curriculum-audit
+classification:
+  type: [CLIENT-CAPABLE, TEACHING]
+  practice: [agentic systems, automation]
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  An agent skill that reconciles a school's gradebook records against its
+  curriculum-mapping system and a published course guide: build the
+  assignment inventory, classify evidence, correct misplacements, verify
+  every unit — with a human confirming every destructive step. Practical
+  agentic orchestration across educational systems of record.
+topics: [curriculum mapping, reconciliation, browser agents, agent skills, PLTW]
+research_programs: []
+repositories:
+  - url: https://github.com/willieavendano/atlas-curriculum-audit
+    role: canonical
+    visibility: public
+    note: Link withheld from public pages pending documentation review.
+agents: [Researcher, Builder, Critic]
+human_gates:
+  - every deletion or move in the curriculum system is confirmed by the teacher
+  - vendor AI features used only when explicitly authorised
+commercial:
+  commissionable: true
+  product_candidate: true
+  revenue_model: "portable kit (ND-KIT-001) — candidate"
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/atlas-curriculum-audit
+  notes: >-
+    Skill file plus one worked example; 3 commits, 2026-06-07 → 2026-06-10.
+    Built for the author's own teaching context; no student data in the repo.
+  review_required: true
+  third_party: [a curriculum-mapping tool, a student-information system, a vendor course guide]
+  ai_coauthored: false
+publication:
+  case_study: true
+  public_url: null
+  featured: true
+  recommendation: FEATURE ONLY
+  order: 5
+  published: "2026-06-07"
+facts:
+  - { label: form, value: "agent skill (SKILL.md), runner-portable" }
+  - { label: workflow steps, value: "6" }

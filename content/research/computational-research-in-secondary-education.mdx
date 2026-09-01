@@ -1,0 +1,39 @@
+---
+id: ND-R02
+slug: computational-research-in-secondary-education
+title: Computational Research in Secondary Education
+deck: How research-grade computation fitting in a browser tab changes what a secondary learner can investigate.
+---
+
+## Thesis
+
+A neural network that once needed a lab machine now trains in a browser tab. A transformer classifier that once needed a research group's compute budget now fine-tunes on a laptop. A Monte Carlo simulation that once justified a course in numerical methods now runs as a slider. This program studies what changes when that shift reaches secondary education — not whether the tools work, but what a sixteen-year-old can now investigate.
+
+The honest answer is that the *scale* of inquiry changes, not the *understanding* required to make sense of it. A student can now ask what a stock's volatility implies about a forecast's confidence band and get an answer in minutes instead of a semester. But answering that honestly still requires knowing what geometric Brownian motion assumes, why a decision tree overfits without a validation split, and why a given error rate might be excellent for one series and useless for another. The computation is delegated; the judgment is not. A defensible research finding still needs a stated question, a method with disclosed assumptions, an evaluation against a held-out set, and an account of where the method breaks. What moves from "impossible before college" to "buildable in a course" is the scaffolding around a question, not the interpretive work itself.
+
+A tool that computes faster than a learner can supervise is not a research tool; it is a black box with a chart attached. The exemplars below pair a method with an explicit account of what it cannot tell you — a model card, a documented assumption, a metric a learner must interrogate rather than accept.
+
+## Exemplars
+
+**ND-005 — MDSolids Web.** A browser-based reimplementation of a mechanics-of-materials teaching suite: section properties, axial and torsional loading, beams, trusses, columns, Mohr's circle, combined loading, pressure vessels, across 11 modules. The tool takes over the repetitive numerical work — matrix methods for truss analysis, iterative Mohr's-circle construction, root-finding for combined-load cases — and renders results instantly so a learner can vary one parameter at a time. The learner must still understand the mechanics theory well enough to define a problem's geometry and loads correctly, and verify at least one result by hand before trusting the rest.
+
+**ND-006 — Stock Forecast.** A client-side forecaster combining a two-layer LSTM (TensorFlow.js), a geometric Brownian motion Monte Carlo model with 5–95% confidence bands, a decision-tree regressor over engineered technical indicators, and a disagreement-widened ensemble — trained and evaluated entirely in the browser on an 80/10/10 split with no look-ahead bias. The tool takes over training the network, running the Monte Carlo paths, and computing indicators like RSI and MACD. The learner must still judge what the reported error means for that series, understand what GBM's constant-drift assumption hides, and resist treating backtested accuracy as predictive power.
+
+**ND-007 — Political Polarity.** An NLP pipeline measuring political lean in text: a TF-IDF plus logistic-regression baseline, an optional fine-tuned DistilBERT path, synthetic-data generation, and a model card stating out-of-scope uses. The tool takes over vectorizing text, training the classifier, and computing calibration and topic-leakage statistics. The learner must still write the classifier's limits into the model card, decide on a defensible labeling strategy, and hold the line — repeated in the tool's own warnings — that a polarity score is not evidence of any individual's beliefs.
+
+## Authorship and provenance
+
+These three tools were built by the teacher, working with agents, as exemplars of what the method makes possible — not as a byproduct of students independently producing them. That needs stating plainly, because earlier descriptions of Stock Forecast and Political Polarity called them student research projects and the commit history shows otherwise. Stock Forecast's 13 commits are all by the author; Political Polarity's are all by the author with no student-provided data committed. MDSolids Web's 13 commits carry Claude co-author trailers, with parallel modules produced by dispatched agent workers and integrated under review — a different but equally non-student authorship pattern.
+
+The program's position is that attribution must match the commit record. A tool built by a teacher with agents is arguably the more direct story for a program about agentic research in education. But it is not the same story as student authorship. Any future claim of student contribution requires the student's consent before naming them, and consent has not yet been sought. This is recorded as an open decision in `RUN-2026-0001`.
+
+## Open questions
+
+- What problems become investigable by a sixteen-year-old when a research-grade pipeline fits in a browser tab?
+- Which parts of a computational method must a learner build by hand to understand it?
+- How is authorship attributed when a teacher, students and agents all contribute?
+- What does a defensible model card look like at secondary level?
+
+## Method notes
+
+Where a model card exists (Political Polarity), it states intended use, out-of-scope use, and data and measurement limitations rather than a bare accuracy number. Political Polarity's pipeline runs entirely on generated synthetic data for development and testing, and its subset reporting enforces k-anonymity so no small group is surfaced. No project here is trained on or ships personally identifying data: Stock Forecast's inputs are public market data fetched client-side, and Political Polarity prohibits inferring any individual's beliefs from its output. Where an exemplar has no model card, that is a tracked gap, not a settled adequacy claim.

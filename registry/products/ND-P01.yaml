@@ -1,0 +1,16 @@
+id: ND-P01
+code: AE-KIT-001
+title: Agentic Education Field Guide
+slug: agentic-education-field-guide
+family: Null Kits
+status: candidate
+visibility: public
+summary: >-
+  A practitioner kit for teachers: the framework, a lesson-design protocol, a
+  delegation matrix, a verification protocol, assessment rubrics, classroom
+  agent patterns and an implementation guide.
+derived_from: [ND-R01, ND-008, ND-009]
+contents: [framework, lesson-design protocol, delegation matrix, verification protocol, assessment rubrics, classroom agent patterns, teacher implementation guide]
+revenue_model: one-time digital purchase; institutional licence
+maintenance: versioned releases; low-touch after v1
+launch_requires: [at least one documented classroom cycle, human-authored claims only, pricing decision]

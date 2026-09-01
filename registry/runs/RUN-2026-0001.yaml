@@ -1,0 +1,62 @@
+id: RUN-2026-0001
+date: "2026-09-01"
+title: Discovery, architecture and initial build of null.design
+trigger: "manual — studio founding brief"
+human_director: Willie Avendano
+status: running
+inputs:
+  - founding brief (Null Design — discovery, architecture & initial build)
+  - GitHub account and organisation inventory
+  - local project directories
+  - private knowledge vault notes (read-only)
+  - service and skill listings on self-hosted machines (read-only)
+tools:
+  - gh
+  - git
+  - ssh (read-only listing)
+  - create-next-app
+  - vitest
+  - agents/dispatch.sh
+  - Playwright (screenshots)
+roles:
+  - { role: Operator, agent: "Claude Fable 5 (Claude Code)", scope: "planning, synthesis, integration, review" }
+  - { role: Scout, agent: "Claude Sonnet 5 ×3 (subagents)", scope: "read-only repository, infrastructure and education inventories" }
+  - { role: Builder, agent: "GLM 5.3 Flash (OpenCode)", scope: "src/lib/ids.ts, src/lib/rss.ts against tests — gate PASS on first attempt (both)" }
+  - { role: Builder, agent: "GPT-5.6 Sol (Codex)", scope: "src/lib/registry.ts, scripts/validate-registry.ts against tests — gate PASS on first attempt" }
+  - { role: Researcher, agent: "Claude Sonnet 5 ×2 (subagents)", scope: "fact-constrained case-study drafts from the discovery report" }
+  - { role: Critic, agent: "Claude Opus 5 (subagent)", scope: "fabrication, leakage, hype, provenance, consistency and accessibility review of the site, registry and report" }
+artifacts:
+  - docs/discovery/2026-09-01-discovery-report.md (private; kept out of the publishable tree)
+  - docs/discovery/screenshots/ (private)
+  - registry/schema.ts and 20 records (13 projects, 2 programs, 4 products, 1 run)
+  - registry/_templates/project.yaml
+  - content/work/ (11 case studies) and content/research/ (2 program essays)
+  - content/_templates/ (project, research)
+  - src/ — Next.js App Router site (index, work, research, process, studio, /dev/null, feed.xml, registry.json, sitemap, robots, OG image, icon)
+  - src/lib/ids.ts, src/lib/rss.ts, src/lib/registry.ts, src/lib/content.ts (+ 33 tests)
+  - scripts/validate-registry.ts
+  - agents/dispatch.sh, agents/roles.md, .claude/agents/worker-*.md, opencode.json
+  - AGENTS.md, README.md
+  - docs/identity/directions.md, docs/identity/moodboard.md, public/identity/*.svg
+  - docs/architecture/publishing-pipeline.md
+critiques:
+  - "Critic (Opus 5) returned 50 findings: 5 blockers, 20 major, 22 minor, 3 notes. Blockers: private discovery report staged in the publishable tree; public link to a repository whose README needs scrubbing; a cost/duration claim attributed to the run record that the record did not contain; domain-expiry date exposed through published human_decisions; the site announcing the location of unsanitised artifacts. All five fixed before commit."
+  - "Major findings fixed: unsourced specifics trimmed from ND-006/007/008 case studies; case-study pages now gated on publication.case_study; three canonical flows reconciled as stage view vs. role view with an explicit note on where the gate sits; fabricated /dev/null shell transcript removed; --ink-3 darkened to meet 4.5:1; run record status set to running, artifacts enumerated, critiques recorded; work committed on a run branch, not main; vendor names generalised in ND-003."
+  - "Minor findings fixed: arXiv cadence softened (first episode was a Tuesday); ND-013 removed from ND-R01; featured order renumbered from 1; work index is now a real table; skip link targets a focusable main; favicon fill corrected; Facts headings normalised; template header aligned; feed uses a published date; README wording. Deferred: OG image font (Plex not loadable in ImageResponse without bundling), committed inspection facts files, MDX-vs-registry facts-table cross-check."
+human_decisions:
+  - { decision: "Renew the studio domain (see private discovery report for the date)", outcome: pending, date: null }
+  - { decision: "Agentic Teaching ↔ Agentic Education positioning", outcome: pending, date: null }
+  - { decision: "Reframe 'student project' attributions (ND-006, ND-007 pages held until resolved)", outcome: pending, date: null }
+  - { decision: "Revive nulldesign GitHub org for the site repository", outcome: pending, date: null }
+  - { decision: "Mirror Qlass and MDSolids under nulldesign", outcome: pending, date: null }
+  - { decision: "Deploy scaffold to a preview URL", outcome: pending, date: null }
+  - { decision: "Provision studio@null.design mailbox before contact address goes live", outcome: pending, date: null }
+  - { decision: "Choose a code licence (README states none chosen)", outcome: pending, date: null }
+result:
+  commit: null
+  publication: null
+notes: >-
+  Nothing was transferred, published or deployed. Worker gate results are
+  summarised in roles[]; raw dispatch logs live in .dispatch/ (not committed).
+  The run remains "running" until a human decision is recorded and the branch
+  is merged.

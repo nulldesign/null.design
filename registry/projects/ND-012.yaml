@@ -1,0 +1,37 @@
+id: ND-012
+title: t6cam
+slug: t6cam
+classification:
+  type: [EXPERIMENT]
+  practice: [physical computing, software]
+status: active
+visibility: private
+year: { started: 2026, ended: null }
+summary: >-
+  A consumer DSLR turned into a macOS virtual camera: a CoreMediaIO extension,
+  a capture pipeline and an MJPEG web stream, packaged with a launchd service
+  and an importable OBS scene.
+topics: [CoreMediaIO, Swift, capture pipeline, hardware bridge]
+research_programs: []
+repositories:
+  - url: https://github.com/willieavendano/t6cam
+    role: canonical
+    visibility: private
+agents: [Builder]
+human_gates: []
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/t6cam
+  notes: ""
+  review_required: false
+  third_party: [gphoto2, ffmpeg]
+  ai_coauthored: true
+publication:
+  case_study: false
+  public_url: null
+  featured: false
+  recommendation: KEEP PERSONAL

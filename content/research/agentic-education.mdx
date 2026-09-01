@@ -1,0 +1,65 @@
+---
+id: ND-R01
+slug: agentic-education
+title: Agentic Education
+deck: How computational agents can increase a learner's agency without doing the thinking that produces learning.
+---
+
+## Why a program, not a feature
+
+Most discussion of AI in education collapses into one product category: the tutor. A patient, tireless explainer that answers questions and grades work. Tutoring is not nothing, but it accepts the existing shape of school and inserts a machine into the role of the teacher. Agentic Education starts elsewhere. It asks what changes when learners can direct computational agents the way a principal investigator directs a laboratory — and what must *not* change, because some cognitive work is the learning.
+
+The working definition:
+
+> Agentic Education investigates how computational agents can increase human agency in learning without outsourcing the cognitive work through which learning occurs.
+
+And the principle that decides every design question in the program:
+
+> The purpose of the agent is to increase the agency of the learner.
+
+An agent that writes the essay has reduced the learner's agency, whatever the essay's quality. An agent that fetches forty sources, clusters them, and lets a sixteen-year-old decide which three matter has expanded the space of problems that learner can take on. The difference is not the model. It is the allocation of work.
+
+## The learner workflow
+
+The program treats agent use as a discipline with named steps, each of which produces something a teacher can look at:
+
+```
+DEFINE → DECOMPOSE → DELEGATE → OBSERVE → VERIFY → SYNTHESIZE → DEFEND
+```
+
+- **Define.** The learner states the question, the constraints and what a good answer would let them do. Agents do not define problems.
+- **Decompose.** The learner breaks the question into parts and marks which parts must be done by hand because doing them produces understanding.
+- **Delegate.** Bounded tasks — search, transcription, first-pass analysis, code that the learner can read — go to scoped agents with explicit instructions.
+- **Observe.** The learner watches what the agent did, not only what it returned.
+- **Verify.** Output is checked against sources, against a second method, or against a hand calculation. Unverified output does not enter the work.
+- **Synthesize.** The learner writes the argument. This step is never delegated.
+- **Defend.** The learner answers questions about the work, including questions about what was delegated and why.
+
+The workflow is also an assessment instrument. A teacher who can see the delegation decisions and the verification record is assessing thinking that the final artifact alone would hide.
+
+## What the program produces
+
+Research, essays, classroom experiments, software, protocols, curriculum, professional-development material and, where a pattern proves durable, products. The order matters. Software comes after protocols; products come after documented classroom cycles.
+
+Three experiments are registered:
+
+- **AE-001 — Six models, one lesson.** Complete. Six model routes given the same lesson-design brief, scored on a fixed rubric with the route of invocation recorded — and a disclosed conflict of interest, because the reviewing model scored its own submission. See ND-008.
+- **AE-002 — Teacher-gated unit builder pilot.** Planned. Qlass (ND-002) contains a plan → author → review pipeline that a teacher must review and publish; every run is logged to an audit table. The pilot is bounded to one class and one unit with pre-registered success criteria.
+- **AE-003 — Agentic Research Studio protocol.** Planned. One full cycle of student-directed research with scoped Researcher, Analyst and Critic agents, in which learners keep definition, decomposition, delegation, verification, synthesis and defence.
+
+<Placeholder>Results from AE-002 and AE-003 do not exist yet. Nothing on this page reports an outcome that has not happened.</Placeholder>
+
+## Relationship to Agentic Teaching
+
+Agentic Education is the research program. It sits beside an earlier, practitioner-facing framework — *Agentic Teaching* — that positions the teacher as an intentional orchestrator of AI tools. The two are complementary: one asks what the learner should keep, the other asks how the teacher should build the room. How they are named and presented together is an open decision recorded in RUN-2026-0001.
+
+## Learning environments
+
+Qlass (ND-002) is the program's candidate learning environment: self-hostable, open source, with the provider keys owned by the instance and a teacher gate on every generated artifact. The intent is not to add a chatbot. It is to give scoped agents a place inside the classroom's system of record where their work is visible, logged and reviewable — and where the learner's own steps in the workflow above can be recorded as first-class evidence.
+
+## Method notes
+
+- Public data and synthetic data only in exemplars; no student information in any published artifact.
+- Student contributions are named only with consent; otherwise work is attributed to the teacher who built it, which is accurate for the exemplars currently in the catalogue.
+- Model cards accompany any classifier or forecaster used with learners.
+- Claims about learning are made by people, from evidence, after a cycle — not by agents, from plausibility, before one.

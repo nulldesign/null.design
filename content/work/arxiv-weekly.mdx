@@ -1,0 +1,44 @@
+---
+id: ND-004
+slug: arxiv-weekly
+title: arXiv Weekly
+deck: A self-hosted agent skill that turns 21 arXiv categories into a weekly research podcast, running unattended every week.
+---
+
+## Problem
+
+Keeping up with published research across a broad set of fields is a standing reading load that does not fit into a normal week. The candidate answer is not a smarter search box but a standing pipeline: something that goes and looks every week, decides what is actually worth attention, and turns that into something consumable on a commute.
+
+## System
+
+The repository that most people would find (`arxiv-weekly-podcast`) is only the publish sink — it holds the RSS feed and the rendered episodes. The pipeline itself is not code in that repository at all; it is a skill running inside a self-hosted agent (Hermes, Nous Research's runtime) on an always-on Mac, triggered by a weekly cron job.
+
+```
+search → enrich → filter → synthesize → script → voice → publish
+```
+
+Each run searches 21 arXiv categories, enriches the resulting candidates with citation and impact data from the Semantic Scholar API, and filters roughly 100 candidates down to the 5–10 most interesting. It synthesizes a written briefing into a knowledge vault, writes a spoken script from that briefing, produces audio through ElevenLabs (the pipeline moved from Edge TTS to ElevenLabs after its first episode), and updates the public RSS feed at `willieavendano.github.io/arxiv-weekly-podcast/feed.xml`.
+
+## Human gates
+
+- The category list and the filter criteria were set by a human up front.
+- There is no human review of an individual episode before it publishes. This is a documented gap, not an oversight — the pipeline runs and publishes fully unattended today. A candidate product, the Null Brief (ND-P04), is documented as the path to closing that gap by adding a critique and human-approval stage before anything ships as a paid or more visible product.
+
+## Provenance
+
+Original work, agent-authored: all 16 commits to the publish-sink repository were made by the agent process itself, not by a human committing on its behalf. The pipeline's stages are verified in the skill definition on the host, not just claimed in the README.
+
+<Placeholder>screenshot of a published episode's vault briefing alongside its audio and feed entry</Placeholder>
+
+## Status and next
+
+Active, running since June 2026. Classified as active research infrastructure, featured but not yet a product. The open gap is the missing per-episode human gate; closing it — reading every source before an episode ships, and disclosing provenance per item — is the stated precondition before any paid Null Brief edition launches.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| episodes | 12 (2026-06-09 → 2026-08-31) |
+| categories | 21 |
+| candidates per week | 100 → 5–10 |
+| cadence | weekly |

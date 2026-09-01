@@ -1,0 +1,34 @@
+---
+id: ND-006
+slug: stock-forecast
+title: Stock Forecast in the Browser
+deck: A four-model price forecaster that trains, simulates and evaluates entirely client-side.
+---
+
+## Problem
+
+Forecasting a stock's price is a standard research exercise, but the usual path — a Python backend, a training server, a database for historical data — puts most of the interesting computation out of a secondary learner's reach. Stock Forecast asks a narrower question: how much of a real forecasting pipeline (neural, statistical, and tree-based methods, with a proper train/validation/test discipline) can run entirely in a browser tab, with no backend and no data leaving the machine.
+
+## System
+
+The tool combines four models behind one interface. A two-layer LSTM (TensorFlow.js, with dropout and early stopping) trains client-side. A geometric Brownian motion model fits drift and volatility from historical returns and runs a Monte Carlo simulation to produce a median forecast with 5–95% confidence bands. A decision-tree regressor, grid-searched, is evaluated on a held-out set using engineered technical indicators such as RSI and MACD. An ensemble averages the three with confidence bands widened by cross-model disagreement. Historical prices are fetched client-side from public market-data APIs (Alpha Vantage or Yahoo Finance); no data leaves the browser.
+
+## Human gates
+
+No formal human gate is recorded in the project's registry entry for this tool. The 13 commits in the repository are all attributed to a single author, who is the sole reviewer of the tool's output and framing to date.
+
+## Provenance
+
+Ownership is original; the canonical repository is [github.com/willieavendano/stock-forecast](https://github.com/willieavendano/stock-forecast). All 13 commits are by the author, several carrying AI co-author trailers. Third-party components: TensorFlow.js, React, Recharts; data from Alpha Vantage or Yahoo Finance.
+
+The project's course page describes Stock Forecast as a student research project. The commit history shows no student authorship. This framing question is unresolved and is recorded as an open decision in `RUN-2026-0001`: either the tool is presented as a teacher-built exemplar, or specific student contribution is documented and named only with that student's consent. Until that decision is made, this page describes the tool by what the commit record shows.
+
+## Status and next
+
+Status: complete. The registry recommends featuring the project without a full case study at this time (`FEATURE ONLY`), pending resolution of the authorship-framing question above.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| models | 4 (LSTM, GBM-MC, decision tree, ensemble) |

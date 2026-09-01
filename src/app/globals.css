@@ -1,26 +1,297 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─────────────────────────────────────────────────────────────
+   Null Design — visual tokens
+   Paper / ink / one accent. One sans, one mono. Hairline rules.
+   ───────────────────────────────────────────────────────────── */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --paper: #fbfbf9;
+  --paper-2: #f2f2ee;
+  --ink: #101010;
+  --ink-2: #4a4a46;
+  --ink-3: #6d6d67;
+  --rule: #d9d9d3;
+  --rule-strong: #101010;
+  --accent: #1f3fbf; /* index blue: the colour of a link in a manual */
+  --accent-ink: #ffffff;
+
+  --measure: 66ch;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --hairline: 1px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #0f0f0e;
+    --paper-2: #171716;
+    --ink: #ecece8;
+    --ink-2: #b4b4ae;
+    --ink-3: #8f8f89;
+    --rule: #2a2a28;
+    --rule-strong: #ecece8;
+    --accent: #7c93ff;
+    --accent-ink: #0f0f0e;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-feature-settings: "kern", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Typographic primitives ─────────────────────────────────── */
+
+.meta {
+  font-family: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+  font-size: var(--text-2xs);
+  line-height: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.mono {
+  font-family: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+  font-feature-settings: "zero", "ss01";
+}
+
+.rule {
+  border-top: var(--hairline) solid var(--rule);
+}
+
+.rule-strong {
+  border-top: var(--hairline) solid var(--rule-strong);
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.link-quiet {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.link-quiet:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ── Prose (MDX) ────────────────────────────────────────────── */
+
+.prose {
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  margin-top: 2.6em;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding-top: 0.9em;
+  border-top: var(--hairline) solid var(--rule-strong);
+}
+
+.prose h3 {
+  margin-top: 2em;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.prose h2::before,
+.prose h3::before {
+  content: attr(data-number);
+  display: inline-block;
+  min-width: 3ch;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  vertical-align: 0.15em;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul > li {
+  position: relative;
+}
+
+.prose ul > li::before {
+  content: "–";
+  position: absolute;
+  left: -1.4em;
+  color: var(--ink-3);
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li + li {
+  margin-top: 0.35em;
+}
+
+.prose blockquote {
+  padding-left: 1.25rem;
+  border-left: var(--hairline) solid var(--rule-strong);
+  color: var(--ink-2);
+}
+
+.prose pre {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  padding: 1rem 1.125rem;
+  background: var(--paper-2);
+  border: var(--hairline) solid var(--rule);
+  overflow-x: auto;
+}
+
+.prose code {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+}
+
+.prose :not(pre) > code {
+  padding: 0.05em 0.3em;
+  background: var(--paper-2);
+  border: var(--hairline) solid var(--rule);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose th {
+  text-align: left;
+  font-weight: 500;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: var(--hairline) solid var(--rule-strong);
+}
+
+.prose td {
+  vertical-align: top;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: var(--hairline) solid var(--rule);
+}
+
+.prose hr {
+  border: 0;
+  border-top: var(--hairline) solid var(--rule);
+  margin: 2.5em 0;
+}
+
+.prose figure figcaption,
+.caption {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  margin-top: 0.5rem;
+}
+
+.prose .placeholder,
+.placeholder {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  border: var(--hairline) dashed var(--rule-strong);
+  padding: 0.75rem 1rem;
+}
+
+.placeholder::before {
+  content: "[ ] ";
+  color: var(--ink-3);
 }

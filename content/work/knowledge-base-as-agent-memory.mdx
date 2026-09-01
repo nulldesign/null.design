@@ -1,0 +1,26 @@
+---
+id: ND-011
+slug: knowledge-base-as-agent-memory
+title: Knowledge Base as Agent Memory
+deck: A human-owned, git-synced notes vault, embedded on a schedule and exposed to agents as one read-only search tool.
+---
+
+## Problem
+
+Agents need memory that outlives a single context window, but memory that an agent can silently rewrite is a different and worse problem than no memory at all. This experiment asks what long-term memory looks like when a human keeps full ownership and editability of the record, and an agent is only ever a reader of it, never a writer.
+
+## System
+
+The knowledge base is a git-synced Markdown notes vault. On a schedule, its contents are embedded into pgvector and made available for semantic search. That search is exposed to agents through a single tool — a read-only interface, not direct database or file access — so an agent can query the memory but cannot alter it. The underlying components are third-party: PostgreSQL as the database, pgvector for the vector index, Ollama for local embedding generation, and FastAPI serving the search endpoint. The service and its embedding index run on an always-on Mac; the vault itself is synced independently and on its own schedule.
+
+## Human gates
+
+One gate governs the whole design: agents have read-only access, and humans own the notes. Every write to the memory happens through the human editing the vault directly; nothing an agent does can change what the memory contains.
+
+## Provenance
+
+Ownership of the architecture is original; the components it is built on (PostgreSQL, pgvector, Ollama, FastAPI) are third-party and named as such. This page describes architecture only. The vault's contents are private — no note contents, topics, or excerpts appear here or anywhere in Null material.
+
+## Status and next
+
+Status: active. Visibility is internal, and the registry's publication recommendation is `KEEP PRIVATE`. What is intended for public description is the pattern — read-only agent access to a human-edited, embedded knowledge base — not the vault, its contents, or its host details beyond "an always-on Mac."

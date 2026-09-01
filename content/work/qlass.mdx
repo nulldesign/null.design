@@ -1,0 +1,45 @@
+---
+id: ND-002
+slug: qlass
+title: Qlass
+deck: A self-hostable classroom LMS with an agentic unit builder that publishes nothing without a teacher's review.
+---
+
+## Problem
+
+Teachers who want the convenience of a classroom platform are usually handed a choice between a closed hosted product or nothing. Qlass is built for the alternative: an open-source, self-hostable learning management system that a teacher or school controls end to end, with an optional agentic unit builder that drafts classroom materials but never publishes them unsupervised.
+
+## System
+
+Qlass is a Next.js application backed by PostgreSQL through Prisma, with NextAuth for authentication. Classes, streams, classwork, submissions and grading are conventional LMS structures. The distinct part is the agentic unit builder, which runs as a three-stage generation and writes every attempt to an audit table (`AgentRun`) with fields for the input, the outline, the drafts, the review pass, the model used and status.
+
+```
+plan → author → review → teacher publishes
+```
+
+A unit build plans from teacher input and course memory, drafts classwork and materials, and runs an AI reviewer pass for clarity, grade level, source safety and standards alignment before presenting editable drafts. Nothing reaches students until a teacher explicitly publishes it. The project's own roadmap states plainly: "No student-facing autonomous AI should ship in alpha." Model access is bring-your-own-key — the instance owner supplies provider credentials, and the system is documented as provider-agnostic across cloud and local model runtimes. Continuous integration runs Prisma schema validation, a typecheck, the test suite and a production build against Postgres on every change.
+
+## Human gates
+
+- A teacher reviews and publishes every generated unit; nothing is auto-published.
+- Model provider keys are supplied by the instance owner (BYOK) — there is no shared or default key.
+
+## Provenance
+
+Original work: 34 commits between 2026-06-04 and 2026-07-07, of which 26 carry `Co-Authored-By: Claude` trailers. Licensed MIT.
+
+<Placeholder>screenshot of the AgentRun audit table for a completed unit build</Placeholder>
+
+## Status and next
+
+Active, classified as flagship and a product candidate. Third-party components: Next.js, Prisma, NextAuth, the Vercel AI SDK, and Railway (hosting for the production instance). The project documents a hosted tier and additional connectors (Google Classroom, Schoology, Veracross feasibility) as under evaluation for a later phase; none of that is launched, priced or committed to a client today.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| licence | MIT |
+| data models | 28 (Prisma) |
+| test files | 8 (Vitest) |
+| agent pipeline | plan → author → review → teacher publish |
+| audit table | AgentRun |

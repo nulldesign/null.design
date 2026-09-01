@@ -1,0 +1,45 @@
+---
+id: ND-005
+slug: mdsolids-web
+title: MDSolids Web
+deck: A browser-based, clean-room rebuild of the classic mechanics-of-materials teaching suite, built by a human directing a fleet of agents.
+---
+
+## Problem
+
+MDSolids, the mechanics-of-materials teaching software created by Dr. Timothy A. Philpot, was Windows-only desktop software — durable and well regarded, but incompatible with a classroom where students carry phones and Chromebooks, not Windows machines. A modern equivalent needed to run anywhere a browser runs and let a teacher hand a student a link to a pre-loaded problem instead of a file.
+
+## System
+
+MDSolids Web is a clean-room reimplementation of the kinds of analyses the original offered: section properties, axial deformation, torsion, beam diagrams and deflection, truss analysis, column buckling, stress and strain transformation with an interactive Mohr's circle, combined loading, and pressure vessels — 11 modules in total. It is explicitly not affiliated with, derived from, or endorsed by the original software or its author.
+
+Each module is a self-contained folder under a shared contract (`MODULE_CONTRACT.md`): pure, unit-tested math in `compute.ts`, checked against textbook values, and a separate `index.ts` for the interactive UI. Because the math and the interface are strictly separated, module implementation could be parallelized.
+
+```
+author defines module contract and worked examples → dispatch one module per worker → worker implements compute.ts + tests + UI against the contract → integrate → human review
+```
+
+A human author defined the shared `ModuleDef` contract and the worked textbook examples up front, then dispatched implementation of individual modules in parallel to workers, with a lead agent integrating the results. Every generated module was reviewed by the author against the contract before being accepted.
+
+## Human gates
+
+- The module contract and worked textbook examples were defined by the author, not generated.
+- Every generated module is integrated and reviewed by the author before it ships.
+
+## Provenance
+
+Original work, 13 commits carrying Claude co-author trailers. Third-party components: Vite and Vitest; the application itself has no runtime dependencies. Licensed MIT, with the clean-room disclaimer kept verbatim: this project is not affiliated with or derived from the original MDSolids.
+
+<Placeholder>screenshot of the torsion module showing a worked example and its plotted result</Placeholder>
+
+## Status and next
+
+Active, deployed to GitHub Pages at `willieavendano.github.io/mdsolids`. Classified as flagship and a product candidate, associated with the research program on computational research in secondary education (ND-R02). Not commissionable as client work; the project documents a possible departmental licence or support offering as a candidate, not a launched product.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| modules | 11 |
+| licence | MIT |
+| deployed | GitHub Pages |
