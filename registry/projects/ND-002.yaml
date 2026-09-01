@@ -18,6 +18,9 @@ repositories:
   - url: https://github.com/willieavendano/qlass-lms
     role: canonical
     visibility: public
+  - url: https://github.com/nulldesign/qlass-lms
+    role: mirror
+    visibility: public
 agents: [Builder, Critic]
 human_gates:
   - teacher reviews and publishes every generated unit

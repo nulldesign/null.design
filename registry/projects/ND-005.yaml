@@ -18,6 +18,9 @@ repositories:
   - url: https://github.com/willieavendano/mdsolids
     role: canonical
     visibility: public
+  - url: https://github.com/nulldesign/mdsolids
+    role: mirror
+    visibility: public
 agents: [Builder, Critic]
 human_gates:
   - module contract and worked examples defined by the author
