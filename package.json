@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "registry:validate": "tsx scripts/validate-registry.ts",
+    "null:publish": "tsx scripts/publish.ts",
     "check": "npm run typecheck && npm run test && npm run registry:validate && npm run lint"
   },
   "dependencies": {

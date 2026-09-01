@@ -52,6 +52,13 @@ IPv4/IPv6 literals · tailnet or internal hostnames · ports · local filesystem
 
 Banned: AI solutions · revolutionize · unlock the power · 10x · AI transformation · seamless · cutting-edge · leverage · game-changing · empower (as marketing) · exclamation marks in body copy.
 
-## Future command
+## Command (partial)
 
-`scripts/publish.ts <ID> [--dry-run]` should implement stages 1–10 and 14, stop at 11 with a printed checklist, and refuse to run 12–13 unless the run record carries an approval.
+`npm run null:publish -- <ID> [--dry-run]` (`scripts/publish.ts`) implements the automatable stages and stops at the gate:
+
+- stage 1 — `validateRegistry`; any problem aborts everything;
+- stage 7 — the leakage and language checks above (`src/lib/checks.ts`) over the case study and its registry record, printed as `path:line [check] match`;
+- stage 9 — `next build` (skipped with `--dry-run`);
+- stage 11 — the checklist from `src/lib/publish-plan.ts`, one line per stage with its role, mode and whether it is permitted.
+
+Stages 12–13 are marked permitted only when `registry/runs/*.yaml` contains an approved, dated `human_decisions[]` entry that names the ID and the word "publish". The script never executes them and never prints a merge or deploy command, approved or not. Stages 2–6, 8, 10 and 14 are listed as manual; they are role work, not shell work. CI (`.github/workflows/check.yml`) runs stages 1 and 9 plus tests and lint on every pull request.

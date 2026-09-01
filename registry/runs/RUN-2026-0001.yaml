@@ -29,6 +29,11 @@ roles:
   - { role: Builder, agent: "GLM 5.3 Flash (OpenCode)", scope: "src/lib/facts.ts against src/lib/facts.test.ts — gate PASS on first attempt" }
   - { role: Builder, agent: "Claude Sonnet 5 (subagent)", scope: "README attribution pull requests on the two exemplar repositories (opened, not merged)" }
   - { role: Critic, agent: "Claude Opus 5 (subagent)", scope: "second pass over the changes made after the human decisions of 2026-09-01" }
+  - { role: Builder, agent: "GLM 5.3 Flash (OpenCode)", scope: "src/lib/facts.ts factsTableProblems and validator wiring against src/lib/facts.test.ts — gate PASS on first attempt" }
+  - { role: Builder, agent: "GPT-5.6 Sol (Codex)", scope: "src/lib/publish-plan.ts against src/lib/publish-plan.test.ts — gate PASS on first attempt" }
+  - { role: Builder, agent: "GLM 5.3 Flash (OpenCode)", scope: "src/lib/checks.ts against src/lib/checks.test.ts — gate FAIL: the worker exhausted its reasoning budget and wrote nothing; job re-dispatched to Codex" }
+  - { role: Builder, agent: "GPT-5.6 Sol (Codex)", scope: "src/lib/checks.ts (stage-7 leakage and language checks) against src/lib/checks.test.ts — gate PASS on first attempt" }
+  - { role: Builder, agent: "GPT-5.6 Sol (Codex)", scope: "scripts/publish.ts and scripts/publish.test.ts (pipeline stages 1, 7, 9 and the gate checklist; never merges or deploys) — gate PASS on first attempt" }
 artifacts:
   - docs/discovery/2026-09-01-discovery-report.md (private; kept out of the publishable tree)
   - docs/discovery/screenshots/ (private)
@@ -45,6 +50,12 @@ artifacts:
   - github.com/nulldesign/qlass-lms and github.com/nulldesign/mdsolids (forks; mirrors of the canonical repositories)
   - Vercel project "null-design" (preview deployments only; no production alias)
   - agents/dispatch.sh, agents/roles.md, .claude/agents/worker-*.md, opencode.json
+  - .github/workflows/check.yml (typecheck, tests, registry validation, lint, build on pull requests; never merges or deploys)
+  - src/app/fonts/IBMPlexSans-Medium.ttf + OFL.txt (bundled for the OG image; deferred critic item resolved)
+  - src/lib/publish-plan.ts (+ tests) — pure planner for the publish pipeline; stops at the human gate
+  - src/lib/checks.ts (+ tests) — stage-7 leakage and banned-language checks as a pure module
+  - "scripts/publish.ts (+ tests) — npm run null:publish -- <ID> [--dry-run]: validate, critique-check, build, print the gate checklist; refuses stages 12–13 without a recorded approval"
+  - src/lib/facts.ts factsTableProblems (+ tests) — per-row cell-count reporting; deferred critic item resolved
   - AGENTS.md, README.md
   - docs/identity/directions.md, docs/identity/moodboard.md, public/identity/*.svg
   - docs/architecture/publishing-pipeline.md

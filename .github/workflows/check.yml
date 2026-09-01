@@ -1,0 +1,26 @@
+name: check
+
+# Stages 1, 7 and 9 of the publishing pipeline (validate, critique gate, build).
+# Nothing here merges or deploys; those stages sit behind the human gate (AGENTS.md §5).
+
+on:
+  pull_request:
+  push:
+    branches: [main, "run/**", "publish/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build

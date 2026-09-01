@@ -1,10 +1,17 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt = "null design — independent computational studio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+// IBM Plex Sans Medium, SIL Open Font License 1.1 (src/app/fonts/OFL.txt).
+// next/font/google cannot be used inside ImageResponse, so the face is bundled.
+const PLEX_SANS_MEDIUM = join(process.cwd(), "src/app/fonts/IBMPlexSans-Medium.ttf");
+
+export default async function OpenGraphImage() {
+  const plex = await readFile(PLEX_SANS_MEDIUM);
   return new ImageResponse(
     (
       <div
@@ -17,7 +24,7 @@ export default function OpenGraphImage() {
           padding: 72,
           background: "#fbfbf9",
           color: "#101010",
-          fontFamily: "Helvetica, Arial, sans-serif",
+          fontFamily: "IBM Plex Sans",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -52,6 +59,9 @@ export default function OpenGraphImage() {
         </div>
       </div>
     ),
-    size,
+    {
+      ...size,
+      fonts: [{ name: "IBM Plex Sans", data: plex, weight: 500, style: "normal" }],
+    },
   );
 }

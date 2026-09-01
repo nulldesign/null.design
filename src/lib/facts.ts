@@ -52,7 +52,7 @@ function isSeparatorRow(cells: string[]): boolean {
   return cells.length > 0 && cells.every((cell) => SEPARATOR_CELL.test(cell));
 }
 
-export function parseFactsTable(mdx: string): Fact[] | null {
+function findFactsDataRows(mdx: string): string[] | null {
   const lines = mdx.split(/\r?\n/);
   let headingIndex = -1;
   let inFence = false;
@@ -70,7 +70,7 @@ export function parseFactsTable(mdx: string): Fact[] | null {
   if (headingIndex === -1) return null;
 
   const body = lines.slice(headingIndex + 1);
-  const facts: Fact[] = [];
+  const rows: string[] = [];
   let inTable = false;
 
   for (let i = 0; i < body.length; i += 1) {
@@ -86,12 +86,33 @@ export function parseFactsTable(mdx: string): Fact[] | null {
       inTable = true;
       continue;
     }
-    const cells = splitRow(body[i]);
-    if (isSeparatorRow(cells)) continue;
-    facts.push({ label: cells[0] ?? "", value: cells[1] ?? "" });
+    if (isSeparatorRow(splitRow(body[i]))) continue;
+    rows.push(body[i]);
   }
 
-  return facts;
+  return rows;
+}
+
+export function parseFactsTable(mdx: string): Fact[] | null {
+  const rows = findFactsDataRows(mdx);
+  if (rows === null) return null;
+  return rows.map((row) => splitRow(row)).map((cells) => ({ label: cells[0] ?? "", value: cells[1] ?? "" }));
+}
+
+export function factsTableProblems(id: string, mdx: string): string[] {
+  const rows = findFactsDataRows(mdx);
+  if (rows === null) return [];
+  const problems: string[] = [];
+  for (let i = 0; i < rows.length; i += 1) {
+    const line = rows[i];
+    const count = splitRow(line).length;
+    if (count !== 2) {
+      problems.push(
+        `${id}: facts row ${i + 1} has ${count} ${count === 1 ? "cell" : "cells"}, expected 2: ${line.trim()}`,
+      );
+    }
+  }
+  return problems;
 }
 
 export function compareFacts(id: string, registry: Fact[], content: Fact[] | null): string[] {

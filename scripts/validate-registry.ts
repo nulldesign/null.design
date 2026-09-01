@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { getRegistry, validateRegistry } from "../src/lib/registry";
-import { compareFacts, parseFactsTable } from "../src/lib/facts";
+import { compareFacts, factsTableProblems, parseFactsTable } from "../src/lib/facts";
 
 const registry = getRegistry();
 const problems = validateRegistry(registry);
@@ -42,9 +42,11 @@ for (const [section, bySlug] of sections) {
     if (fm.title !== record.title) problems.push(`content/${section}/${f} frontmatter title "${fm.title}" ≠ registry "${record.title}"`);
     if (section === "work") {
       const project = registry.projects.find((p) => p.id === record.id);
-      const facts = parseFactsTable(readFileSync(join(dir, f), "utf8"));
+      const src = readFileSync(join(dir, f), "utf8");
+      const facts = parseFactsTable(src);
       // A record with no facts may omit the table; otherwise the table must mirror the registry.
       if (project && (project.facts.length > 0 || facts !== null)) problems.push(...compareFacts(project.id, project.facts, facts).map((p) => `content/${section}/${f}: ${p}`));
+      if (project) problems.push(...factsTableProblems(project.id, src).map((p) => `content/${section}/${f}: ${p}`));
     }
   }
 }

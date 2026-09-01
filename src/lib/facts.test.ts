@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareFacts, parseFactsTable, type Fact } from "./facts";
+import { compareFacts, factsTableProblems, parseFactsTable, type Fact } from "./facts";
 
 const doc = `---
 id: ND-002
@@ -117,5 +117,47 @@ describe("parseFactsTable — edge cases", () => {
   it("handles CRLF line endings", () => {
     const src = "## Facts\r\n\r\n| Label | Value |\r\n|---|---|\r\n| modules | 11 |\r\n";
     expect(parseFactsTable(src)).toEqual([{ label: "modules", value: "11" }]);
+  });
+});
+
+describe("factsTableProblems", () => {
+  const bad = `## Facts
+
+| Label | Value |
+|---|---|
+| licence | MIT |
+| stray | a | b |
+| lonely |
+
+## Next
+`;
+
+  it("returns no problems when every data row has exactly two cells", () => {
+    expect(factsTableProblems("ND-002", doc)).toEqual([]);
+  });
+
+  it("returns no problems when there is no ## Facts section or no table", () => {
+    expect(factsTableProblems("ND-002", "# Nothing here")).toEqual([]);
+    expect(factsTableProblems("ND-002", "## Facts\n\nNo table.\n\n## Next")).toEqual([]);
+  });
+
+  it("reports each data row whose cell count is not two, numbered from 1 after the separator", () => {
+    expect(factsTableProblems("ND-002", bad)).toEqual([
+      "ND-002: facts row 2 has 3 cells, expected 2: | stray | a | b |",
+      "ND-002: facts row 3 has 1 cell, expected 2: | lonely |",
+    ]);
+  });
+
+  it("does not count an escaped pipe as a cell boundary", () => {
+    const ok = "## Facts\n\n| L | V |\n|---|---|\n| pipe | a \\| b |\n";
+    expect(factsTableProblems("ND-002", ok)).toEqual([]);
+  });
+
+  it("leaves parseFactsTable tolerant of malformed rows", () => {
+    expect(parseFactsTable(bad)).toEqual<Fact[]>([
+      { label: "licence", value: "MIT" },
+      { label: "stray", value: "a" },
+      { label: "lonely", value: "" },
+    ]);
   });
 });
