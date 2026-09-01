@@ -53,7 +53,7 @@ human_decisions:
   - { decision: "Provision studio@null.design mailbox before contact address goes live", outcome: pending, date: null }
   - { decision: "Choose a code licence (README states none chosen)", outcome: pending, date: null }
 result:
-  commit: null
+  commit: "f730e70 (branch run/RUN-2026-0001, unmerged)"
   publication: null
 notes: >-
   Nothing was transferred, published or deployed. Worker gate results are
