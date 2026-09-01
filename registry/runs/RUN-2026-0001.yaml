@@ -77,7 +77,7 @@ human_decisions:
   - { decision: "Attach null.design to a production deployment", outcome: pending, date: null }
   - { decision: "Merge the README attribution pull requests on the two exemplar repositories (opened by the Operator as the mechanism for the attribution decision, without a separate approval; closing them reverts the action)", outcome: pending, date: null }
 result:
-  commit: "19390e6 (branch run/RUN-2026-0001 at github.com/nulldesign/null.design, pull request #1, unmerged)"
+  commit: "b8d353f (branch run/RUN-2026-0001 at github.com/nulldesign/null.design, pull request #1, unmerged)"
   publication: "preview deployment on Vercel (team-protected URL, not production; no domain attached)"
 notes: >-
   Nothing was transferred; the two mirrors are forks and the canonical
