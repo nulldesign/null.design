@@ -44,14 +44,16 @@ critiques:
   - "Major findings fixed: unsourced specifics trimmed from ND-006/007/008 case studies; case-study pages now gated on publication.case_study; three canonical flows reconciled as stage view vs. role view with an explicit note on where the gate sits; fabricated /dev/null shell transcript removed; --ink-3 darkened to meet 4.5:1; run record status set to running, artifacts enumerated, critiques recorded; work committed on a run branch, not main; vendor names generalised in ND-003."
   - "Minor findings fixed: arXiv cadence softened (first episode was a Tuesday); ND-013 removed from ND-R01; featured order renumbered from 1; work index is now a real table; skip link targets a focusable main; favicon fill corrected; Facts headings normalised; template header aligned; feed uses a published date; README wording. Deferred: OG image font (Plex not loadable in ImageResponse without bundling), committed inspection facts files, MDX-vs-registry facts-table cross-check."
 human_decisions:
-  - { decision: "Renew the studio domain (see private discovery report for the date)", outcome: pending, date: null }
-  - { decision: "Agentic Teaching ↔ Agentic Education positioning", outcome: pending, date: null }
-  - { decision: "Reframe 'student project' attributions (ND-006, ND-007 pages held until resolved)", outcome: pending, date: null }
-  - { decision: "Revive nulldesign GitHub org for the site repository", outcome: pending, date: null }
-  - { decision: "Mirror Qlass and MDSolids under nulldesign", outcome: pending, date: null }
-  - { decision: "Deploy scaffold to a preview URL", outcome: pending, date: null }
-  - { decision: "Provision studio@null.design mailbox before contact address goes live", outcome: pending, date: null }
-  - { decision: "Choose a code licence (README states none chosen)", outcome: pending, date: null }
+  - { decision: "Renew the studio domain (renewed by the human director; expiry date kept private)", outcome: approved, date: "2026-09-01" }
+  - { decision: "Agentic Teaching ↔ Agentic Education positioning: complementary and cross-linked, not merged", outcome: approved, date: "2026-09-01" }
+  - { decision: "Attribute ND-006 and ND-007 as teacher-built exemplars (commit record); publish both case studies", outcome: approved, date: "2026-09-01" }
+  - { decision: "Revive the nulldesign GitHub organisation; create nulldesign/null.design and push the run branch", outcome: approved, date: "2026-09-01" }
+  - { decision: "Mirror Qlass and MDSolids under nulldesign as forks; canonical repositories unchanged", outcome: approved, date: "2026-09-01" }
+  - { decision: "Deploy the scaffold to a preview URL only — no production alias, no domain, no DNS change", outcome: approved, date: "2026-09-01" }
+  - { decision: "Provision studio@null.design mailbox (human director will create it; no agent action)", outcome: deferred, date: "2026-09-01" }
+  - { decision: "Code licence: MIT for the repository", outcome: approved, date: "2026-09-01" }
+  - { decision: "Merge run/RUN-2026-0001 to main", outcome: pending, date: null }
+  - { decision: "Attach null.design to a production deployment", outcome: pending, date: null }
 result:
   commit: "f730e70 (branch run/RUN-2026-0001, unmerged)"
   publication: null

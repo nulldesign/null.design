@@ -29,16 +29,19 @@ provenance:
   ownership: original
   original_repository: https://github.com/willieavendano/political-polarity
   notes: >-
-    All commits by the author; no data committed. Same framing question as
-    ND-006.
+    All 3 commits by the author; no data committed. Attributed as a
+    teacher-built exemplar by human decision (RUN-2026-0001, 2026-09-01). As
+    with ND-006, the repository README is being updated by pull request and
+    the link is withheld from public pages until it is merged.
   review_required: true
   third_party: [scikit-learn, Hugging Face Transformers, Gradio]
   ai_coauthored: true
 publication:
-  case_study: false
+  case_study: true
   public_url: null
   featured: false
   recommendation: FEATURE ONLY
+  published: "2026-09-01"
 facts:
   - { label: models, value: "TF-IDF + LR baseline; DistilBERT" }
   - { label: model card, value: "yes" }

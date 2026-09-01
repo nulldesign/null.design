@@ -49,4 +49,4 @@ This repository was established in `RUN-2026-0001` (see `registry/runs/`): one l
 
 ## Licence
 
-No licence has been chosen yet; until one is, all rights are reserved. A code licence is an open decision recorded in `registry/runs/RUN-2026-0001.yaml`.
+MIT — see `LICENSE`. This covers the code, the registry and the site content in this repository. Projects catalogued in the registry carry their own licences, stated in their own repositories.
