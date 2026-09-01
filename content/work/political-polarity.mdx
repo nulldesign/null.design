@@ -1,0 +1,35 @@
+---
+id: ND-007
+slug: political-polarity
+title: Political Polarity
+deck: An NLP pipeline for measuring political lean in text, shipped with a model card that states what it must not be used for.
+---
+
+## Problem
+
+Studying political framing and language patterns across a text corpus once required a research team: labeled data, a training pipeline, and an evaluation protocol. Political Polarity asks whether a single researcher — in this case, a secondary-level project — can run that whole pipeline responsibly, and whether "responsibly" can be made concrete rather than aspirational: stated out-of-scope uses, privacy safeguards, and calibration checks that are part of the tool rather than an afterthought.
+
+## System
+
+The pipeline offers two models: a TF-IDF plus logistic-regression baseline, and a fine-tuned DistilBERT transformer for three-class (left / centre / right) classification. Data can be split stratified or by time. Subset reporting is k-anonymity-aware, suppressing groups below a minimum size. The system ships a model card stating primary use cases, explicit out-of-scope uses, limitations and safeguards, plus a synthetic-data generator so the full pipeline can be exercised without any real corpus; a small Gradio interface and a notebook wrap it.
+
+## Human gates
+
+The registry records one explicit human gate for this project: the model card limits use, and prohibits individual profiling. That constraint is enforced in the tool's own documentation and repeated in its outputs — the system classifies text content, not individuals, and its README and model card both state that outputs must never be used to infer any individual's political beliefs or any protected trait.
+
+## Provenance
+
+Ownership is original; the canonical repository is on the author's personal GitHub account; its README was updated to the exemplar framing on 2026-09-01. All commits are by the author, and no data is committed to the repository — the data directories are empty by design, with synthetic-data generation used for testing. Third-party components: scikit-learn, Hugging Face Transformers, Gradio.
+
+Earlier course material described this as a student research project. As with ND-006, the commit history shows no student authorship; on 2026-09-01 the human director resolved the framing (`RUN-2026-0001`): the pipeline is a teacher-built exemplar, attributed to its author. No student contributed to the code or is named here.
+
+## Status and next
+
+Status: complete. The pipeline is used as an exemplar in ND-R02; the model card and its out-of-scope uses travel with any future use. No further development is planned.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| models | TF-IDF + LR baseline; DistilBERT |
+| model card | yes |

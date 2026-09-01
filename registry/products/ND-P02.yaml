@@ -1,0 +1,16 @@
+id: ND-P02
+code: AE-KIT-002
+title: Agentic Research Studio
+slug: agentic-research-studio
+family: Null Kits
+status: candidate
+visibility: public
+summary: >-
+  A reproducible framework for student-directed research with scoped research,
+  analysis and critic agents; learners keep problem definition, decomposition,
+  delegation, verification, synthesis and defence.
+derived_from: [ND-R01, ND-R02, ND-001]
+contents: [research protocol, agent scopes, verification checklist, defence rubric, run-record template]
+revenue_model: one-time digital purchase; institutional licence
+maintenance: versioned releases
+launch_requires: [one completed AE-003 cycle, consented examples]

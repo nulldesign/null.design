@@ -1,0 +1,36 @@
+id: ND-010
+title: Approval Gate for Consequential Agent Actions
+slug: approval-gate
+classification:
+  type: [EXPERIMENT, PRIVATE INFRASTRUCTURE]
+  practice: [agentic systems, automation]
+status: active
+visibility: internal
+year: { started: 2026, ended: null }
+summary: >-
+  A small service and two automation flows that let an agent propose actions
+  near money without being trusted: position caps, a falsifiable thesis
+  required for every proposal, a push-notification approval loop, and a 24-hour
+  auto-reject. The pattern is public; the data is not.
+topics: [guardrails, approval gate, n8n, kill switch]
+research_programs: []
+repositories: []
+agents: [Analyst, Operator]
+human_gates:
+  - every proposal expires unless a human approves within 24 h
+commercial:
+  commissionable: true
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: null
+  notes: Composed over third-party open-source services; guardrail logic is original.
+  review_required: false
+  third_party: [n8n, OpenBB, Ghostfolio]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: false
+  recommendation: KEEP PRIVATE

@@ -1,0 +1,36 @@
+id: ND-009
+title: Course Operations Compiler
+slug: course-operations-compiler
+classification:
+  type: [PRIVATE INFRASTRUCTURE, TEACHING]
+  practice: [automation, software]
+status: active
+visibility: internal
+year: { started: 2026, ended: null }
+summary: >-
+  Treat syllabi, block plans, warm-ups, exit tickets and slide decks as compiled
+  artifacts: single-source calendar and course specs, deterministic generators,
+  a tested date library, an agent skill for deck authoring, and programmatic QA
+  for layout overflow. Architecture described publicly; repositories stay private.
+topics: [build systems, deterministic generation, deck builder, QA harness]
+research_programs: [ND-R01]
+repositories: []
+agents: [Builder, Critic]
+human_gates:
+  - all student-facing content reviewed by the teacher before use
+commercial:
+  commissionable: true
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: null
+  notes: Private by design; CI forbids deployment of the ops repository.
+  review_required: false
+  third_party: [reveal.js, Jinja2, pandoc]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: false
+  recommendation: KEEP PRIVATE

@@ -1,0 +1,53 @@
+id: ND-005
+title: MDSolids Web
+slug: mdsolids-web
+classification:
+  type: [FLAGSHIP, PRODUCT CANDIDATE, TEACHING]
+  practice: [software, learning environments]
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  An open-source, browser-based, clean-room reimplementation of the classic
+  mechanics-of-materials teaching suite: section properties, axial, torsion,
+  beams, trusses, columns, Mohr's circle, combined loading, pressure vessels.
+  Built by a human directing a fleet of agents against a shared module contract.
+topics: [mechanics of materials, engineering education, numerical methods, agent fleet]
+research_programs: [ND-R02]
+repositories:
+  - url: https://github.com/willieavendano/mdsolids
+    role: canonical
+    visibility: public
+  - url: https://github.com/nulldesign/mdsolids
+    role: mirror
+    visibility: public
+agents: [Builder, Critic]
+human_gates:
+  - module contract and worked examples defined by the author
+  - integration and review of every generated module
+commercial:
+  commissionable: false
+  product_candidate: true
+  revenue_model: "open source; departmental licence or support — candidate"
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/mdsolids
+  notes: >-
+    Clean-room reimplementation; not affiliated with or derived from the
+    original MDSolids by T. A. Philpot. 13 commits with Claude co-author
+    trailers; parallel modules produced by dispatched workers, integrated by a
+    lead agent under human review.
+  review_required: false
+  third_party: [Vite, Vitest]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: https://willieavendano.github.io/mdsolids/
+  featured: true
+  recommendation: MIRROR UNDER NULL
+  order: 4
+  published: "2026-06-10"
+facts:
+  - { label: modules, value: "11" }
+  - { label: licence, value: "MIT" }
+  - { label: deployed, value: "GitHub Pages" }

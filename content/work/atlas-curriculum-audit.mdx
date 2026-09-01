@@ -1,0 +1,42 @@
+---
+id: ND-003
+slug: atlas-curriculum-audit
+title: Atlas Curriculum Audit
+deck: An agent skill that reconciles a school's assignment records against its curriculum map, with a human confirming every deletion.
+---
+
+## Problem
+
+A school's student-information system holds the record of what was assigned, when, and to whom. Its curriculum-mapping tool holds the record of what a course is supposed to teach, unit by unit. These two systems drift apart: an assignment gets logged in the wrong unit, an assessment ends up filed as narrative "other evidence" instead of a real assessment artifact, a vendor course's materials never make it into the map at all because the student-information system has no attachment for them. Reconciling the two by hand, unit by unit, course by course, is slow, easy to get wrong, and easy to defer indefinitely.
+
+## System
+
+The work is packaged as a portable agent skill (`SKILL.md`), not a hosted app — it is a workflow definition an agent follows, not a service. It can be handed to Claude Code, to Codex, or to a Hermes-based runner as its operating procedure, with browser access to the logged-in student-information system and curriculum-mapping tool.
+
+```
+establish course map → build assignment inventory → classify evidence → update curriculum-map stage 2 → move misplaced attachments → sanity-check every unit
+```
+
+The agent builds an assignment inventory from the student-information system, classifies each item as formative or summative evidence, and reconciles it against the curriculum-mapping tool's assessments section — moving anything that was filed under generic "Other Evidence" instead. For vendor-curriculum courses, where the student-information system references an activity but exposes no direct attachment, the skill falls back to the vendor's published course guide as the source of the assignment asset. Every unit gets a final sanity check before the run is considered complete, and the skill keeps a brief audit log of what was checked, corrected, or left uncertain.
+
+## Human gates
+
+- Every deletion or move inside the curriculum-mapping tool is confirmed by the teacher before it happens.
+- Vendor AI features inside the curriculum tool are used only when the teacher has explicitly authorized them.
+
+## Provenance
+
+Original work, built for the author's own teaching context: a skill file plus one worked example, 3 commits between 2026-06-07 and 2026-06-10. No student data lives in the repository. The repository link is withheld from this page pending a review of its documentation; no school, course-section or client identifier appears here.
+
+<Placeholder>diagram of the assignment-to-unit reconciliation flow across the student-information system and curriculum-mapping tool</Placeholder>
+
+## Status and next
+
+Active. Classified as client-capable teaching tooling, featured but not yet generalized. The project documents a candidate portable kit (ND-KIT-001) that would strip the school-specific vocabulary and ship the reconciliation workflow as a reusable product. No such kit is built yet.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| form | agent skill (SKILL.md), runner-portable |
+| workflow steps | 6 |

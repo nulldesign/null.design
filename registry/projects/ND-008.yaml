@@ -1,0 +1,40 @@
+id: ND-008
+title: Six Models, One Lesson
+slug: six-models-one-lesson
+classification:
+  type: [RESEARCH, EXPERIMENT]
+  practice: [intelligent systems, learning environments]
+status: complete
+visibility: public
+year: { started: 2026, ended: 2026 }
+summary: >-
+  Six model routes given the identical lesson-design brief (an AI-literacy
+  lesson for a statistics course), scored on a fixed rubric, with the route of
+  invocation recorded and a disclosed conflict: the reviewer graded its own
+  submission. The first Agentic Education experiment (AE-001).
+topics: [model comparison, rubric, lesson design, self-critique, AI literacy]
+research_programs: [ND-R01]
+repositories: []
+agents: [Analyst, Critic]
+human_gates:
+  - rubric and prompt authored by the teacher
+  - conclusions written by the teacher
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: null
+  notes: Local project without a remote at discovery time; to be pushed under Null.
+  review_required: false
+  third_party: [Claude, Codex, Gemini, DeepSeek]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: false
+  recommendation: MOVE TO NULL
+facts:
+  - { label: routes compared, value: "6" }
+  - { label: rubric dimensions, value: "5" }

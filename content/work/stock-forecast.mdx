@@ -1,0 +1,34 @@
+---
+id: ND-006
+slug: stock-forecast
+title: Stock Forecast in the Browser
+deck: A four-model price forecaster that trains, simulates and evaluates entirely client-side.
+---
+
+## Problem
+
+Forecasting a stock's price is a standard research exercise, but the usual path — a Python backend, a training server, a database for historical data — puts most of the interesting computation out of a secondary learner's reach. Stock Forecast asks a narrower question: how much of a real forecasting pipeline (neural, statistical, and tree-based methods, with a proper train/validation/test discipline) can run entirely in a browser tab, with no backend and no data leaving the machine.
+
+## System
+
+The tool combines four models behind one interface. A two-layer LSTM (TensorFlow.js, with dropout and early stopping) trains client-side. A geometric Brownian motion model fits drift and volatility from historical returns and runs a Monte Carlo simulation to produce a median forecast with 5–95% confidence bands. A decision-tree regressor, grid-searched, is evaluated on a held-out set using engineered technical indicators such as RSI and MACD. An ensemble averages the three with confidence bands widened by cross-model disagreement. Historical prices are fetched client-side from public market-data APIs (Alpha Vantage or Yahoo Finance); no data leaves the browser.
+
+## Human gates
+
+No formal human gate is recorded in the project's registry entry for this tool. The 13 commits in the repository are all attributed to a single author, who is the sole reviewer of the tool's output and framing to date.
+
+## Provenance
+
+Ownership is original; the canonical repository is on the author's personal GitHub account; its README was updated to the exemplar framing on 2026-09-01. All 13 commits are by the author; 11 carry AI co-author trailers (commit log as of 2026-09-01). Third-party components: TensorFlow.js, React, Recharts; data from Alpha Vantage or Yahoo Finance.
+
+Earlier course material described Stock Forecast as a student research project. The commit history shows no student authorship, and on 2026-09-01 the human director resolved the framing (`RUN-2026-0001`): the tool is a teacher-built exemplar, attributed to its author. No student contributed to the code or is named here.
+
+## Status and next
+
+Status: complete. The tool is used as an exemplar in ND-R02; no further development is planned. A candidate next step, not yet scheduled, is a version of the exercise in which learners run the DEFINE → DECOMPOSE → DELEGATE → OBSERVE → VERIFY → SYNTHESIZE → DEFEND workflow against it (ND-R01).
+
+## Facts
+
+| Label | Value |
+|---|---|
+| models | 4 (LSTM, GBM-MC, decision tree, ensemble) |

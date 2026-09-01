@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Null Operator dispatch logs
+.dispatch/
+
+# Playwright MCP scratch
+.playwright-mcp/
+
+# Discovery report and screenshots are INTERNAL (employer identifiers, expiry dates, private-infra notes).
+# Canonical private copy: ~/Vault/memory/projects/null-design/. Never commit to the public site repo.
+docs/discovery/*
+!docs/discovery/README.md

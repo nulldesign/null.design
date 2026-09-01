@@ -1,0 +1,16 @@
+id: ND-P03
+code: ND-KIT-001
+title: Curriculum Audit Agent
+slug: curriculum-audit-agent
+family: Null Kits
+status: candidate
+visibility: public
+summary: >-
+  A portable workflow for reconciling a school's system of record against its
+  curriculum map: configurable source/target systems, a placement taxonomy,
+  human confirmation gates and a structured audit log.
+derived_from: [ND-003]
+contents: [skill definition, placement taxonomy template, audit-log schema, operator guide]
+revenue_model: one-time purchase per school; setup commission
+maintenance: vendor UI changes require periodic revision
+launch_requires: [sanitised reference implementation, second-school validation]

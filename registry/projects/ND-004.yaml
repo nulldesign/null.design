@@ -1,0 +1,51 @@
+id: ND-004
+title: arXiv Weekly
+slug: arxiv-weekly
+classification:
+  type: [ACTIVE, RESEARCH]
+  practice: [research infrastructure, automation, agentic systems]
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  Autonomous weekly research infrastructure: search 21 arXiv categories,
+  enrich with citation data, filter 100 candidates to 5–10, synthesise a
+  briefing into a knowledge vault, write a script, produce audio, publish an
+  RSS podcast feed. Running unattended every Monday since June 2026.
+topics: [arXiv, Semantic Scholar, research digest, podcast, scheduled agents]
+research_programs: []
+repositories:
+  - url: https://github.com/willieavendano/arxiv-weekly-podcast
+    role: publish-sink
+    visibility: public
+    note: Feed and episodes only; the pipeline is a skill in a self-hosted agent.
+agents: [Scout, Researcher, Analyst, Publisher]
+human_gates:
+  - category list and filter criteria set by a human
+  - no human review per episode today (documented as a gap; see ND-P04)
+commercial:
+  commissionable: true
+  product_candidate: true
+  revenue_model: "Null Brief (ND-P04) — free digest first"
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/arxiv-weekly-podcast
+  notes: >-
+    All 16 repo commits are made by the agent process itself. Pipeline stages
+    verified in the skill definition on the host; TTS moved from Edge TTS to
+    ElevenLabs after episode 1.
+  review_required: false
+  third_party: [arXiv API, Semantic Scholar API, Hermes Agent (Nous Research), ElevenLabs, GitHub Pages]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: https://willieavendano.github.io/arxiv-weekly-podcast/feed.xml
+  featured: true
+  recommendation: FEATURE ONLY
+  order: 2
+  published: "2026-06-09"
+facts:
+  - { label: episodes, value: "12 (2026-06-09 → 2026-08-31)" }
+  - { label: categories, value: "21" }
+  - { label: candidates per week, value: "100 → 5–10" }
+  - { label: cadence, value: "weekly" }

@@ -1,0 +1,35 @@
+id: ND-011
+title: Knowledge Base as Agent Memory
+slug: knowledge-base-as-agent-memory
+classification:
+  type: [PRIVATE INFRASTRUCTURE, RESEARCH]
+  practice: [research infrastructure, intelligent systems]
+status: active
+visibility: internal
+year: { started: 2026, ended: null }
+summary: >-
+  A git-synced Markdown vault embedded into pgvector on a schedule and exposed
+  to agents as a single read-only search tool. Long-term memory that humans
+  can read, edit and version — and agents can only query.
+topics: [RAG, pgvector, MCP, memory, Obsidian]
+research_programs: []
+repositories: []
+agents: [Researcher]
+human_gates:
+  - agents have read-only access; humans own the notes
+commercial:
+  commissionable: true
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: null
+  notes: Architecture only; vault contents are private.
+  review_required: false
+  third_party: [PostgreSQL, pgvector, Ollama, FastAPI]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: false
+  recommendation: KEEP PRIVATE

@@ -1,0 +1,39 @@
+id: ND-013
+title: Vidaplate
+slug: vidaplate
+classification:
+  type: [EXPERIMENT, CLIENT-CAPABLE]
+  practice: [software]
+status: planned
+visibility: private
+year: { started: 2026, ended: null }
+summary: >-
+  A bilingual food-access application connecting a community food bank to the
+  people it serves, developed with a student developer under mentorship and
+  pull-request review. Not public until partner and student consent exist.
+topics: [community, food access, mentorship]
+research_programs: [ND-R01]
+repositories:
+  - url: https://github.com/willieavendano/vidaplate
+    role: canonical
+    visibility: private
+agents: [Builder, Critic]
+human_gates:
+  - mentor reviews every pull request
+  - partner sign-off before any public description
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: collaboration
+  original_repository: https://github.com/willieavendano/vidaplate
+  notes: Student developer's commits not yet present; consent required before attribution.
+  review_required: true
+  third_party: [Next.js]
+  ai_coauthored: true
+publication:
+  case_study: false
+  public_url: null
+  featured: false
+  recommendation: KEEP PERSONAL

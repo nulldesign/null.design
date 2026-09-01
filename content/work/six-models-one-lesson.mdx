@@ -1,0 +1,40 @@
+---
+id: ND-008
+slug: six-models-one-lesson
+title: Six Models, One Lesson
+deck: Six model routes given the same lesson-design brief, scored on a fixed rubric, with a disclosed conflict of interest.
+---
+
+## Problem
+
+When a teacher asks "which model should I use for this," the honest answer usually rests on habit rather than evidence. Six Models, One Lesson tests the question directly: give six model routes the identical brief — an AI-literacy lesson for a statistics course — and score what comes back on a fixed rubric, recording for each route exactly how it was invoked. It is the first experiment recorded under the Agentic Education program (AE-001).
+
+## System
+
+The six routes were three Claude models (Fable, Opus, Sonnet) run as Claude Code subagents, Codex run from its command-line interface, Gemini in an anonymous browser session, and DeepSeek run inside a third-party agent framework (Hermes, by Nous Research) on an always-on Mac. A shared prompt file, one output file per route, a metadata file holding the rubric (five dimensions, each scored 1–5) and the invocation route, and a build script that renders a comparison site.
+
+The project documents its own findings, which have not been independently verified:
+
+- all six converged on the same pedagogical skeleton — treat the model's output as the text under analysis — but diverged sharply in the depth of their "watch-outs" sections;
+- the route run inside an agent framework leaked agent behaviour into a lesson plan (offering to save files, framing a "no tools needed" step) — which the project treats as a teachable distinction between a model and an agent;
+- the Gemini result is flagged by the author as a tier artifact, not a fair model comparison, because the anonymous session served a free tier;
+- the recommendations that followed were role-specific rather than a single ranking.
+
+## Human gates
+
+The rubric and the prompt were authored by the teacher, and the conclusions were written by the teacher. The rubric scores themselves were assigned by one of the compared models, which also graded its own submission — and gave it an A. The project discloses this rather than hiding it, and frames the disclosure as the same bias check the lesson asks students to perform. The intended follow-up is to re-score with a group of teachers.
+
+## Provenance
+
+Ownership is original. At the time of discovery this was a local project with no remote repository; it is recorded for move to a Null repository. The compared model routes (Claude, Codex, Gemini, DeepSeek) are third-party.
+
+## Status and next
+
+Complete. The recommendation on file is to move the project to a Null-owned repository, which has not yet happened; no public URL exists yet.
+
+## Facts
+
+| Label | Value |
+|---|---|
+| routes compared | 6 |
+| rubric dimensions | 5 |

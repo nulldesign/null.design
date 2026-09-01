@@ -1,0 +1,47 @@
+id: ND-007
+title: Political Polarity
+slug: political-polarity
+classification:
+  type: [RESEARCH, TEACHING]
+  practice: [data systems, intelligent systems]
+status: complete
+visibility: public
+year: { started: 2026, ended: 2026 }
+summary: >-
+  An NLP pipeline for measuring political lean in text corpora: a TF-IDF +
+  logistic-regression baseline, a fine-tuned DistilBERT path, synthetic-data
+  generation, and a model card stating out-of-scope uses. A study in what a
+  single researcher can now run that once required a team.
+topics: [NLP, transformers, model cards, research ethics, secondary research]
+research_programs: [ND-R02]
+repositories:
+  - url: https://github.com/willieavendano/political-polarity
+    role: canonical
+    visibility: public
+agents: [Builder, Critic]
+human_gates:
+  - model card limits use; no individual profiling
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: https://github.com/willieavendano/political-polarity
+  notes: >-
+    All 3 commits by the author (commit log as of 2026-09-01); no data committed. Attributed as a
+    teacher-built exemplar by human decision (RUN-2026-0001, 2026-09-01). As
+    with ND-006, the repository README was updated to that framing by a pull
+    request merged on 2026-09-01, after which the link was released.
+  review_required: false
+  third_party: [scikit-learn, Hugging Face Transformers, Gradio]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: false
+  recommendation: FEATURE ONLY
+  published: "2026-09-01"
+facts:
+  - { label: models, value: "TF-IDF + LR baseline; DistilBERT" }
+  - { label: model card, value: "yes" }

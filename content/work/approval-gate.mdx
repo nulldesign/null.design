@@ -1,0 +1,26 @@
+---
+id: ND-010
+slug: approval-gate
+title: Approval Gate for Consequential Agent Actions
+deck: A pattern for letting an agent propose actions near money without being trusted to act on them.
+---
+
+## Problem
+
+An agent that can analyze a position and draft a thesis is useful. An agent that can act on that thesis without a check is a liability. The problem this experiment addresses is narrow and general at once: how do you let an agent propose a consequential action — one involving money, in this case — while keeping a human as the only party who can actually authorize it, and do that without the check becoming theater.
+
+## System
+
+The pattern is a small service plus two automation flows, composed over third-party open-source infrastructure with original guardrail logic on top. Every proposal is capped at a fixed position size. Every proposal must carry a falsifiable thesis — a stated, checkable claim, not a vague rationale — before it can even be submitted for approval. Approval itself runs through a push-notification loop: a human is notified, and if no response arrives, the proposal auto-rejects after 24 hours rather than defaulting to action. A kill switch exists to halt the flow entirely. The service runs on a VPS, composed with n8n (automation transport), OpenBB, and Ghostfolio, each named here as third-party components the guardrail logic sits on top of, not as Null's own systems.
+
+## Human gates
+
+The gate is the entire point of the system: every proposal expires unless a human approves it within 24 hours. There is no path from proposal to action that does not pass through this window.
+
+## Provenance
+
+Ownership of the guardrail logic is original; the surrounding services (n8n, OpenBB, Ghostfolio) are third-party and are named as such. This page describes architecture only — the pattern is public, the position data, thesis contents and any account-level information are not, and none appear here.
+
+## Status and next
+
+Status: active. Visibility is internal, and the registry's publication recommendation is `KEEP PRIVATE`. The pattern — position caps, falsifiable thesis, timed approval, kill switch — is the part intended for public description; the repositories and any financial data stay private, unchanged from the current state.

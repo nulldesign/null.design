@@ -1,0 +1,34 @@
+# Copy to registry/projects/ND-NNN.yaml. Filename must equal id. Validate: npm run registry:validate
+id: ND-000
+title: Project Title
+slug: project-slug
+classification:
+  type: [EXPERIMENT]            # FLAGSHIP | ACTIVE | EXPERIMENT | RESEARCH | PRODUCT CANDIDATE | CLIENT-CAPABLE | PRIVATE INFRASTRUCTURE | TEACHING | HISTORICAL | ARCHIVE | FORK / THIRD-PARTY | DO NOT PUBLISH
+  practice: [software]          # intelligent systems | agentic systems | learning environments | software | research infrastructure | automation | data systems | physical computing | fabrication | experimental interfaces
+status: planned                 # active | planned | paused | complete | archived
+visibility: internal            # public | private | internal (internal = architecture only, no repo link)
+year: { started: 2026, ended: null }
+summary: >-
+  Two or three sentences. Verifiable. No metrics that are not counts.
+topics: []
+research_programs: []           # [ND-R01]
+repositories: []                # - { url: https://…, role: canonical|mirror|related|publish-sink, visibility: public|private }
+agents: []                      # Scout | Researcher | Builder | Analyst | Critic | Archivist | Publisher | Operator
+human_gates: []
+commercial:
+  commissionable: false
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original           # original | collaboration | fork | adaptation | student-work | research | client | unknown
+  original_repository: null
+  notes: ""
+  review_required: false
+  third_party: []
+  ai_coauthored: false
+publication:
+  case_study: false
+  public_url: null
+  featured: false
+  recommendation: KEEP PERSONAL # MOVE TO NULL | MIRROR UNDER NULL | FEATURE ONLY | KEEP PERSONAL | KEEP PRIVATE | ARCHIVE
+facts: []                       # - { label: episodes, value: "12" }

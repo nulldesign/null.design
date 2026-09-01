@@ -1,0 +1,52 @@
+id: ND-001
+title: Null Operator
+slug: null-operator
+classification:
+  type: [ACTIVE, PRIVATE INFRASTRUCTURE]
+  practice: [agentic systems, automation, research infrastructure]
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  The studio's own operating layer: a lead agent decomposes work into narrow,
+  test-specified jobs, dispatches them to interchangeable worker models
+  (OpenCode/GLM, Codex, a self-hosted agent), gates every result behind tests
+  and a human decision, and records provenance for each run.
+topics: [orchestration, dispatch, provenance, human gates, worker fleets]
+research_programs: []
+repositories:
+  - url: https://github.com/nulldesign/null.design
+    role: canonical
+    visibility: public
+agents: [Operator, Builder, Critic, Archivist, Publisher]
+human_gates:
+  - publication approval
+  - repository transfers
+  - deployment and DNS
+  - external commitments
+commercial:
+  commissionable: true
+  product_candidate: false
+  revenue_model: null
+provenance:
+  ownership: original
+  original_repository: null
+  notes: >-
+    Generalised from a dispatch harness first built inside a personal project
+    (2026-09-01) and from earlier fleet runs producing teaching decks. The
+    generalised harness lives in the site repository nulldesign/null.design
+    (agents/dispatch.sh, AGENTS.md, registry/runs), created 2026-09-01. Worker
+    runtimes are third-party; the contract, gates and run records are Null's.
+  review_required: false
+  third_party: [OpenCode, OpenAI Codex CLI, Hermes Agent (Nous Research), OpenRouter]
+  ai_coauthored: true
+publication:
+  case_study: true
+  public_url: null
+  featured: true
+  recommendation: MOVE TO NULL
+  order: 3
+  published: "2026-09-01"
+facts:
+  - { label: worker backends, value: "3 (OpenCode, Codex, Hermes over SSH)" }
+  - { label: first recorded run, value: RUN-2026-0001 }

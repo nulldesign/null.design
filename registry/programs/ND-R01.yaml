@@ -1,0 +1,47 @@
+id: ND-R01
+title: Agentic Education
+slug: agentic-education
+status: active
+visibility: public
+year: { started: 2026, ended: null }
+summary: >-
+  Agentic Education investigates how computational agents can increase human
+  agency in learning without outsourcing the cognitive work through which
+  learning occurs.
+definition: >-
+  Agentic Education investigates how computational agents can increase human
+  agency in learning without outsourcing the cognitive work through which
+  learning occurs.
+principle: The purpose of the agent is to increase the agency of the learner.
+workflow: [DEFINE, DECOMPOSE, DELEGATE, OBSERVE, VERIFY, SYNTHESIZE, DEFEND]
+questions:
+  - Which intellectual tasks should learners delegate?
+  - Which tasks should remain human because performing them produces understanding?
+  - How should learners verify computational-agent output?
+  - How should assessment change when agent use is legitimate?
+  - What is agent orchestration literacy?
+  - How can agents expand the complexity of problems learners can investigate?
+  - How should teachers construct environments containing human and computational agents?
+  - How do we distinguish increased learner agency from automated learning?
+outputs: [research, essays, classroom experiments, software, protocols, curriculum, professional-development material, products]
+experiments:
+  - id: AE-001
+    title: Six models, one lesson
+    status: complete
+    project: ND-008
+    summary: Six model routes given one lesson-design brief, scored on a fixed rubric, with a disclosed reviewer conflict.
+  - id: AE-002
+    title: Teacher-gated unit builder pilot
+    status: planned
+    project: ND-002
+    summary: A bounded pilot of Qlass's plan → author → review → publish pipeline with one class and one unit; success criteria pre-registered.
+  - id: AE-003
+    title: Agentic Research Studio protocol
+    status: planned
+    project: null
+    summary: One cycle of student-directed research with scoped Researcher, Analyst and Critic agents; learners keep definition, decomposition, delegation, verification, synthesis and defence.
+projects: [ND-002, ND-008, ND-009]
+publication:
+  public_url: null
+  featured: true
+  published: "2026-09-01"

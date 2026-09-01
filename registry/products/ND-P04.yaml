@@ -1,0 +1,16 @@
+id: ND-P04
+code: ND-BRIEF-001
+title: Null Brief — Agentic Education
+slug: null-brief-agentic-education
+family: Null Brief
+status: candidate
+visibility: public
+summary: >-
+  An agent-assisted research briefing on Agentic Education: search → filter →
+  cluster → read → synthesise → critique → human approval → publish. Free public
+  digest first; paid and institutional editions only after sustained readership.
+derived_from: [ND-004, ND-R01]
+contents: [weekly digest, source list with provenance, critique notes]
+revenue_model: free digest; paid individual edition; institutional licence (later)
+maintenance: ~1–2 hours of human review per issue; the approval gate is the cost
+launch_requires: [education-specific filters, critique stage, human approval stage, 12 free issues before any paid tier]
