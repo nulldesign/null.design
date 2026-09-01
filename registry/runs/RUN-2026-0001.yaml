@@ -25,6 +25,10 @@ roles:
   - { role: Builder, agent: "GPT-5.6 Sol (Codex)", scope: "src/lib/registry.ts, scripts/validate-registry.ts against tests — gate PASS on first attempt" }
   - { role: Researcher, agent: "Claude Sonnet 5 ×2 (subagents)", scope: "fact-constrained case-study drafts from the discovery report" }
   - { role: Critic, agent: "Claude Opus 5 (subagent)", scope: "fabrication, leakage, hype, provenance, consistency and accessibility review of the site, registry and report" }
+  - { role: Scout, agent: "Claude Sonnet 5 (subagent)", scope: "read-only leakage and provenance scan of the four repositories to be linked or mirrored, before any mirror was created" }
+  - { role: Builder, agent: "GLM 5.3 Flash (OpenCode)", scope: "src/lib/facts.ts against src/lib/facts.test.ts — gate PASS on first attempt" }
+  - { role: Builder, agent: "Claude Sonnet 5 (subagent)", scope: "README attribution pull requests on the two exemplar repositories (opened, not merged)" }
+  - { role: Critic, agent: "Claude Opus 5 (subagent)", scope: "second pass over the changes made after the human decisions of 2026-09-01" }
 artifacts:
   - docs/discovery/2026-09-01-discovery-report.md (private; kept out of the publishable tree)
   - docs/discovery/screenshots/ (private)
@@ -34,7 +38,12 @@ artifacts:
   - content/_templates/ (project, research)
   - src/ — Next.js App Router site (index, work, research, process, studio, /dev/null, feed.xml, registry.json, sitemap, robots, OG image, icon)
   - src/lib/ids.ts, src/lib/rss.ts, src/lib/registry.ts, src/lib/content.ts (+ 33 tests)
-  - scripts/validate-registry.ts
+  - scripts/validate-registry.ts (frontmatter and facts-table cross-check)
+  - src/lib/facts.ts (+ tests)
+  - LICENSE (MIT)
+  - github.com/nulldesign/null.design (repository; branch run/RUN-2026-0001; pull request #1 to main, unmerged)
+  - github.com/nulldesign/qlass-lms and github.com/nulldesign/mdsolids (forks; mirrors of the canonical repositories)
+  - Vercel project "null-design" (preview deployments only; no production alias)
   - agents/dispatch.sh, agents/roles.md, .claude/agents/worker-*.md, opencode.json
   - AGENTS.md, README.md
   - docs/identity/directions.md, docs/identity/moodboard.md, public/identity/*.svg
@@ -43,22 +52,27 @@ critiques:
   - "Critic (Opus 5) returned 50 findings: 5 blockers, 20 major, 22 minor, 3 notes. Blockers: private discovery report staged in the publishable tree; public link to a repository whose README needs scrubbing; a cost/duration claim attributed to the run record that the record did not contain; domain-expiry date exposed through published human_decisions; the site announcing the location of unsanitised artifacts. All five fixed before commit."
   - "Major findings fixed: unsourced specifics trimmed from ND-006/007/008 case studies; case-study pages now gated on publication.case_study; three canonical flows reconciled as stage view vs. role view with an explicit note on where the gate sits; fabricated /dev/null shell transcript removed; --ink-3 darkened to meet 4.5:1; run record status set to running, artifacts enumerated, critiques recorded; work committed on a run branch, not main; vendor names generalised in ND-003."
   - "Minor findings fixed: arXiv cadence softened (first episode was a Tuesday); ND-013 removed from ND-R01; featured order renumbered from 1; work index is now a real table; skip link targets a focusable main; favicon fill corrected; Facts headings normalised; template header aligned; feed uses a published date; README wording. Deferred: OG image font (Plex not loadable in ImageResponse without bundling), committed inspection facts files, MDX-vs-registry facts-table cross-check."
+  - "Critic (Opus 5), second pass after the 2026-09-01 decisions: 23 findings — 2 blockers, 8 major, 8 minor, 3 notes. Blockers fixed: /registry.json now withholds repository locations and review notes for records under provenance review, matching the HTML pages; the README pull requests on the two exemplar repositories, opened without a separate approval, are now recorded as a pending decision. Majors fixed: repository paths removed from withheld case-study prose; README and homepage provenance sentences regenerated from roles[]; ND-001 now lists its repository; mailbox precondition restored; positioning decision reworded to forbid linking the parked domain; forward commitment about Agentic Teaching material dropped; facts parser hardened (prose pipes, escaped pipes, fenced headings) with tests. Deferred: dating of published fields until production; per-row cell-count reporting in the parser."
 human_decisions:
   - { decision: "Renew the studio domain (renewed by the human director; expiry date kept private)", outcome: approved, date: "2026-09-01" }
-  - { decision: "Agentic Teaching ↔ Agentic Education positioning: complementary and cross-linked, not merged", outcome: approved, date: "2026-09-01" }
+  - { decision: "Agentic Teaching ↔ Agentic Education positioning: complementary and kept distinct; no link to the parked agenticteaching.com", outcome: approved, date: "2026-09-01" }
   - { decision: "Attribute ND-006 and ND-007 as teacher-built exemplars (commit record); publish both case studies", outcome: approved, date: "2026-09-01" }
   - { decision: "Revive the nulldesign GitHub organisation; create nulldesign/null.design and push the run branch", outcome: approved, date: "2026-09-01" }
   - { decision: "Mirror Qlass and MDSolids under nulldesign as forks; canonical repositories unchanged", outcome: approved, date: "2026-09-01" }
   - { decision: "Deploy the scaffold to a preview URL only — no production alias, no domain, no DNS change", outcome: approved, date: "2026-09-01" }
-  - { decision: "Provision studio@null.design mailbox (human director will create it; no agent action)", outcome: deferred, date: "2026-09-01" }
-  - { decision: "Code licence: MIT for the repository", outcome: approved, date: "2026-09-01" }
+  - { decision: "Provision studio@null.design mailbox before the contact address goes live (human director will create it; no agent action)", outcome: deferred, date: "2026-09-01" }
+  - { decision: "Code licence: MIT for the repository (LICENSE applies to everything in it)", outcome: approved, date: "2026-09-01" }
   - { decision: "Merge run/RUN-2026-0001 to main", outcome: pending, date: null }
   - { decision: "Attach null.design to a production deployment", outcome: pending, date: null }
+  - { decision: "Merge the README attribution pull requests on the two exemplar repositories (opened by the Operator as the mechanism for the attribution decision, without a separate approval; closing them reverts the action)", outcome: pending, date: null }
 result:
-  commit: "f730e70 (branch run/RUN-2026-0001, unmerged)"
-  publication: null
+  commit: "branch run/RUN-2026-0001 at github.com/nulldesign/null.design, unmerged (pull request #1)"
+  publication: "preview deployment on Vercel (team-protected URL, not production; no domain attached)"
 notes: >-
-  Nothing was transferred, published or deployed. Worker gate results are
-  summarised in roles[]; raw dispatch logs live in .dispatch/ (not committed).
-  The run remains "running" until a human decision is recorded and the branch
-  is merged.
+  Nothing was transferred; the two mirrors are forks and the canonical
+  repositories are unchanged. The preview deployment is not production and no
+  domain is attached. Pull requests updating the READMEs of the two exemplar
+  repositories (ND-006, ND-007) are open and unmerged; their repository links
+  stay withheld until merged. Worker gate results are summarised in roles[];
+  raw dispatch logs live in .dispatch/ (not committed). The run remains
+  "running" until the branch is merged.

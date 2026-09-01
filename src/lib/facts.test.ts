@@ -97,3 +97,25 @@ describe("compareFacts", () => {
     expect(compareFacts("ND-013", [], [])).toEqual([]);
   });
 });
+
+describe("parseFactsTable — edge cases", () => {
+  it("skips prose containing a pipe before the table and still parses the table", () => {
+    const src = "## Facts\n\nA sentence with a | pipe in it.\n\n| Label | Value |\n|---|---|\n| modules | 11 |\n";
+    expect(parseFactsTable(src)).toEqual([{ label: "modules", value: "11" }]);
+  });
+
+  it("treats an escaped pipe inside a cell as a literal pipe", () => {
+    const src = "## Facts\n\n| Label | Value |\n|---|---|\n| range | 5 \\| 95 |\n";
+    expect(parseFactsTable(src)).toEqual([{ label: "range", value: "5 | 95" }]);
+  });
+
+  it("ignores a ## Facts line inside a fenced code block", () => {
+    const src = "## System\n\n```\n## Facts\n| a | b |\n|---|---|\n| 1 | 2 |\n```\n\n## Facts\n\n| Label | Value |\n|---|---|\n| modules | 11 |\n";
+    expect(parseFactsTable(src)).toEqual([{ label: "modules", value: "11" }]);
+  });
+
+  it("handles CRLF line endings", () => {
+    const src = "## Facts\r\n\r\n| Label | Value |\r\n|---|---|\r\n| modules | 11 |\r\n";
+    expect(parseFactsTable(src)).toEqual([{ label: "modules", value: "11" }]);
+  });
+});

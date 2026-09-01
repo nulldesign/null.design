@@ -14,7 +14,10 @@ summary: >-
   and a human decision, and records provenance for each run.
 topics: [orchestration, dispatch, provenance, human gates, worker fleets]
 research_programs: []
-repositories: []
+repositories:
+  - url: https://github.com/nulldesign/null.design
+    role: canonical
+    visibility: public
 agents: [Operator, Builder, Critic, Archivist, Publisher]
 human_gates:
   - publication approval
@@ -31,8 +34,8 @@ provenance:
   notes: >-
     Generalised from a dispatch harness first built inside a personal project
     (2026-09-01) and from earlier fleet runs producing teaching decks. The
-    generalised harness lives in the site repository (agents/dispatch.sh,
-    AGENTS.md, registry/runs); a dedicated repository has not been created. Worker
+    generalised harness lives in the site repository nulldesign/null.design
+    (agents/dispatch.sh, AGENTS.md, registry/runs), created 2026-09-01. Worker
     runtimes are third-party; the contract, gates and run records are Null's.
   review_required: false
   third_party: [OpenCode, OpenAI Codex CLI, Hermes Agent (Nous Research), OpenRouter]

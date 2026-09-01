@@ -23,7 +23,7 @@ The registry is the source of truth. A page can only exist for a record that val
 ```
 npm run dev                 # local site
 npm run build               # production build (statically prerendered routes)
-npm run test                # vitest (ids, rss, registry loader)
+npm run test                # vitest (ids, rss, facts, registry loader)
 npm run typecheck
 npm run registry:validate   # schema + cross-reference checks
 npm run check               # all of the above + lint
@@ -45,8 +45,8 @@ agents/dispatch.sh <job> <prompt-file> --backend opencode|codex|hermes --gate "n
 
 ## Provenance
 
-This repository was established in `RUN-2026-0001` (see `registry/runs/`): one lead agent under human direction, three scouting subagents, two worker models building tested modules, two drafting subagents, one critic. Nothing was deployed, transferred or published by the run. The discovery report behind it is private (see `docs/discovery/README.md`); its public residue is the registry, the case studies and the pending decisions in the run record.
+This repository was established in `RUN-2026-0001` (see `registry/runs/`): one lead agent under human direction, with scouting, drafting, building and critic dispatches enumerated in the run record's `roles[]`. Every gated action — the organisation repository, the two mirror forks, the preview deployment — follows a decision recorded in `human_decisions[]`; nothing was transferred, merged to `main` or put into production. The discovery report behind it is private (see `docs/discovery/README.md`); its public residue is the registry, the case studies and the pending decisions in the run record.
 
 ## Licence
 
-MIT — see `LICENSE`. This covers the code, the registry and the site content in this repository. Projects catalogued in the registry carry their own licences, stated in their own repositories.
+MIT — see `LICENSE`. The LICENSE file applies to everything in this repository — code, registry and site content. Projects catalogued in the registry carry their own licences, stated in their own repositories.

@@ -12,6 +12,7 @@ export default function Home() {
     .sort((a, b) => (a.publication.order ?? 99) - (b.publication.order ?? 99));
   const programs = reg.programs.filter((p) => p.visibility === "public" && p.publication.featured);
   const run = reg.runs.at(-1);
+  const dispatches = (role: string) => run?.roles.filter((r) => r.role === role).length ?? 0;
 
   return (
     <Page>
@@ -141,9 +142,9 @@ export default function Home() {
             </p>
             <p className="mt-4">
               This page was produced by <span className="mono text-ink">{run?.id ?? "[ ]"}</span>:
-              one lead agent, five scouting and drafting subagents, two worker models building
-              tested modules, one critic. Nothing was deployed or transferred without a recorded
-              decision.
+              one Operator under human direction; {dispatches("Scout")} Scout, {dispatches("Researcher")}{" "}
+              Researcher, {dispatches("Builder")} Builder and {dispatches("Critic")} Critic dispatches. Nothing
+              was deployed or transferred without a recorded decision.
             </p>
           </div>
         </div>

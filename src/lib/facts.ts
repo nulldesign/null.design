@@ -4,11 +4,48 @@ const FACTS_HEADING = /^##\s+Facts\s*$/;
 const H2_HEADING = /^##\s/;
 const SEPARATOR_CELL = /^:?-+:?$/;
 
+function countTrailingBackslashes(s: string): number {
+  let count = 0;
+  for (let i = s.length - 1; i >= 0 && s[i] === "\\"; i -= 1) {
+    count += 1;
+  }
+  return count;
+}
+
+function splitUnescapedPipes(s: string): string[] {
+  const parts: string[] = [];
+  let current = "";
+  let backslashes = 0;
+  for (const ch of s) {
+    if (ch === "\\") {
+      backslashes += 1;
+      current += ch;
+      continue;
+    }
+    if (ch === "|") {
+      if (backslashes % 2 === 0) {
+        parts.push(current);
+        current = "";
+      } else {
+        current += ch;
+      }
+      backslashes = 0;
+      continue;
+    }
+    backslashes = 0;
+    current += ch;
+  }
+  parts.push(current);
+  return parts;
+}
+
 function splitRow(line: string): string[] {
   let s = line.trim();
   if (s.startsWith("|")) s = s.slice(1);
-  if (s.endsWith("|")) s = s.slice(0, -1);
-  return s.split("|").map((cell) => cell.trim());
+  if (s.endsWith("|") && countTrailingBackslashes(s.slice(0, -1)) % 2 === 0) {
+    s = s.slice(0, -1);
+  }
+  return splitUnescapedPipes(s).map((cell) => cell.replace(/\\\|/g, "|").trim());
 }
 
 function isSeparatorRow(cells: string[]): boolean {
@@ -17,24 +54,39 @@ function isSeparatorRow(cells: string[]): boolean {
 
 export function parseFactsTable(mdx: string): Fact[] | null {
   const lines = mdx.split(/\r?\n/);
-  const headingIndex = lines.findIndex((line) => FACTS_HEADING.test(line.trim()));
+  let headingIndex = -1;
+  let inFence = false;
+  for (let i = 0; i < lines.length; i += 1) {
+    const trimmed = lines[i].trim();
+    if (trimmed.startsWith("```")) {
+      inFence = !inFence;
+      continue;
+    }
+    if (!inFence && FACTS_HEADING.test(trimmed)) {
+      headingIndex = i;
+      break;
+    }
+  }
   if (headingIndex === -1) return null;
 
+  const body = lines.slice(headingIndex + 1);
   const facts: Fact[] = [];
   let inTable = false;
 
-  for (const line of lines.slice(headingIndex + 1)) {
-    if (H2_HEADING.test(line.trim())) break;
-    const trimmed = line.trim();
+  for (let i = 0; i < body.length; i += 1) {
+    const trimmed = body[i].trim();
+    if (H2_HEADING.test(trimmed)) break;
     if (trimmed === "" || !trimmed.includes("|")) {
       if (inTable) break;
       continue;
     }
-    const cells = splitRow(line);
     if (!inTable) {
+      const next = body[i + 1]?.trim() ?? "";
+      if (!isSeparatorRow(splitRow(next))) continue;
       inTable = true;
       continue;
     }
+    const cells = splitRow(body[i]);
     if (isSeparatorRow(cells)) continue;
     facts.push({ label: cells[0] ?? "", value: cells[1] ?? "" });
   }

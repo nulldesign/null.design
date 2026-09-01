@@ -1,3 +1,4 @@
+import type { Project } from "@registry/schema";
 import { getRegistry } from "@/lib/registry";
 
 export const dynamic = "force-static";
@@ -7,6 +8,13 @@ export const dynamic = "force-static";
  * Private records are omitted entirely; internal records are reduced to
  * id/title/summary so architecture-only patterns remain discoverable.
  */
+/** Records under provenance review expose no repository locations or review notes, matching the HTML pages. */
+function withheld(p: Project) {
+  if (!p.provenance.review_required) return p;
+  const { ownership, review_required, third_party, ai_coauthored } = p.provenance;
+  return { ...p, repositories: [], provenance: { ownership, review_required, third_party, ai_coauthored } };
+}
+
 export function GET() {
   const reg = getRegistry();
   const visibleIds = new Set(reg.projects.filter((p) => p.visibility !== "private").map((p) => p.id));
@@ -14,7 +22,7 @@ export function GET() {
     .filter((p) => p.visibility !== "private")
     .map((p) =>
       p.visibility === "public"
-        ? p
+        ? withheld(p)
         : {
             id: p.id,
             title: p.title,

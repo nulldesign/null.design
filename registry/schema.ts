@@ -68,6 +68,7 @@ export const Ownership = z.enum([
   "unknown",
 ]);
 
+/** Repository disposition from discovery — where the code should live, not whether a case study exists. */
 export const Recommendation = z.enum([
   "MOVE TO NULL",
   "MIRROR UNDER NULL",

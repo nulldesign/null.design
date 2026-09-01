@@ -28,7 +28,7 @@ provenance:
   ownership: original
   original_repository: https://github.com/willieavendano/stock-forecast
   notes: >-
-    All 13 commits by the author; 11 carry AI co-author trailers. Attributed
+    All 13 commits by the author; 11 carry AI co-author trailers (commit log as of 2026-09-01). Attributed
     as a teacher-built exemplar by human decision (RUN-2026-0001, 2026-09-01).
     The repository README still carries the superseded framing and names the
     author's employer; a pull request updating it is open, and the link is

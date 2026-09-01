@@ -44,7 +44,7 @@ for (const [section, bySlug] of sections) {
       const project = registry.projects.find((p) => p.id === record.id);
       const facts = parseFactsTable(readFileSync(join(dir, f), "utf8"));
       // A record with no facts may omit the table; otherwise the table must mirror the registry.
-      if (project && (project.facts.length > 0 || facts !== null)) problems.push(...compareFacts(project.id, project.facts, facts));
+      if (project && (project.facts.length > 0 || facts !== null)) problems.push(...compareFacts(project.id, project.facts, facts).map((p) => `content/${section}/${f}: ${p}`));
     }
   }
 }
