@@ -73,9 +73,9 @@ human_decisions:
   - { decision: "Deploy the scaffold to a preview URL only — no production alias, no domain, no DNS change", outcome: approved, date: "2026-09-01" }
   - { decision: "Provision studio@null.design mailbox before the contact address goes live (human director will create it; no agent action)", outcome: deferred, date: "2026-09-01" }
   - { decision: "Code licence: MIT for the repository (LICENSE applies to everything in it)", outcome: approved, date: "2026-09-01" }
-  - { decision: "Merge run/RUN-2026-0001 to main", outcome: pending, date: null }
+  - { decision: "Merge run/RUN-2026-0001 to main", outcome: approved, date: "2026-09-01" }
   - { decision: "Attach null.design to a production deployment", outcome: pending, date: null }
-  - { decision: "Merge the README attribution pull requests on the two exemplar repositories (opened by the Operator as the mechanism for the attribution decision, without a separate approval; closing them reverts the action)", outcome: pending, date: null }
+  - { decision: "Merge the README attribution pull requests on the two exemplar repositories (opened by the Operator as the mechanism for the attribution decision, without a separate approval; closing them reverts the action), then clear review_required on ND-006 and ND-007 so their repository links publish", outcome: approved, date: "2026-09-01" }
 result:
   commit: "b8d353f (branch run/RUN-2026-0001 at github.com/nulldesign/null.design, pull request #1, unmerged)"
   publication: "preview deployment on Vercel (team-protected URL, not production; no domain attached)"

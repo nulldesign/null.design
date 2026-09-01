@@ -31,9 +31,9 @@ provenance:
   notes: >-
     All 3 commits by the author (commit log as of 2026-09-01); no data committed. Attributed as a
     teacher-built exemplar by human decision (RUN-2026-0001, 2026-09-01). As
-    with ND-006, the repository README is being updated by pull request and
-    the link is withheld from public pages until it is merged.
-  review_required: true
+    with ND-006, the repository README was updated to that framing by a pull
+    request merged on 2026-09-01, after which the link was released.
+  review_required: false
   third_party: [scikit-learn, Hugging Face Transformers, Gradio]
   ai_coauthored: true
 publication:
