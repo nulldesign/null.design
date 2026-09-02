@@ -3,7 +3,7 @@ date: "2026-09-01"
 title: Discovery, architecture and initial build of null.design
 trigger: "manual — studio founding brief"
 human_director: Willie Avendano
-status: running
+status: complete
 inputs:
   - founding brief (Null Design — discovery, architecture & initial build)
   - GitHub account and organisation inventory
@@ -74,16 +74,19 @@ human_decisions:
   - { decision: "Provision studio@null.design mailbox before the contact address goes live (human director will create it; no agent action)", outcome: deferred, date: "2026-09-01" }
   - { decision: "Code licence: MIT for the repository (LICENSE applies to everything in it)", outcome: approved, date: "2026-09-01" }
   - { decision: "Merge run/RUN-2026-0001 to main", outcome: approved, date: "2026-09-01" }
-  - { decision: "Attach null.design to a production deployment", outcome: pending, date: null }
+  - { decision: "Attach null.design to a production deployment (deployed and DNS pointed by the human director; no agent action)", outcome: approved, date: "2026-09-01" }
+  - { decision: "Merge the archive pull request (#2) that closes this run", outcome: approved, date: "2026-09-01" }
   - { decision: "Merge the README attribution pull requests on the two exemplar repositories (opened by the Operator as the mechanism for the attribution decision, without a separate approval; closing them reverts the action), then clear review_required on ND-006 and ND-007 so their repository links publish", outcome: approved, date: "2026-09-01" }
 result:
-  commit: "b8d353f (branch run/RUN-2026-0001 at github.com/nulldesign/null.design, pull request #1, unmerged)"
-  publication: "preview deployment on Vercel (team-protected URL, not production; no domain attached)"
+  commit: "8b52a16 (main at github.com/nulldesign/null.design; merge of pull request #1, 2026-09-01)"
+  publication: "https://null.design — production on Vercel, deployed from main after the merge on 2026-09-01"
 notes: >-
   Nothing was transferred; the two mirrors are forks and the canonical
-  repositories are unchanged. The preview deployment is not production and no
-  domain is attached. Pull requests updating the READMEs of the two exemplar
-  repositories (ND-006, ND-007) are open and unmerged; their repository links
-  stay withheld until merged. Worker gate results are summarised in roles[];
-  raw dispatch logs live in .dispatch/ (not committed). The run remains
-  "running" until the branch is merged.
+  repositories are unchanged. The README pull requests on the two exemplar
+  repositories (ND-006, ND-007) were merged on 2026-09-01 and their repository
+  links released. The run branch was merged to main and the site attached to
+  null.design the same day, both by recorded human decision; the deployment
+  and DNS change were performed by the human director. Worker gate results are
+  summarised in roles[]; raw dispatch logs live in .dispatch/ (not committed).
+  Left open for a later run: ND-003 documentation review, ND-013 consent, the
+  Vercel GitHub connection for the organisation, and the studio mailbox.
