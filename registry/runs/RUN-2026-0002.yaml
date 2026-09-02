@@ -16,9 +16,10 @@ roles:
   - { role: Operator, agent: "Claude Fable 5 (Claude Code)", scope: "planning, decisions log, integration" }
   - { role: Scout, agent: "Claude Fable 5 (Claude Code)", scope: "read-only scan of the ND-003 repository for institution, path and vendor identifiers" }
   - { role: Builder, agent: "Claude Fable 5 (Claude Code)", scope: "documentation scrub on a branch of the ND-003 repository, proposed as a pull request; not merged" }
-artifacts: []
+artifacts:
+  - https://github.com/willieavendano/atlas-curriculum-audit/pull/1 (documentation pull request on the ND-003 canonical repository; open, not merged)
 critiques:
-  - "Scout: the ND-003 README carries local filesystem paths that include an institution name; the worked example carries a vendor client identifier in every resource URL. No student data, grades or credentials found."
+  - "Scout: the ND-003 README carries local filesystem paths that include an institution name; the worked example carries a vendor client identifier in every resource URL. No student data, grades or credentials found. The identifier remains in the repository history; only a history rewrite would remove it, and that is left to the human director."
 human_decisions:
   - { decision: "Scrub the ND-003 repository documentation (remove local paths, the institution name and the vendor client identifier) and open a pull request on the canonical repository; the human director merges", outcome: approved, date: "2026-09-01" }
   - { decision: "ND-013: no agent action; the human director may delete the record and repository", outcome: deferred, date: "2026-09-01" }
