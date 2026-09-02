@@ -35,6 +35,7 @@ publication:
   public_url: null
   featured: false
   recommendation: MOVE TO NULL
+  published: "2026-09-01"
 facts:
   - { label: routes compared, value: "6" }
   - { label: rubric dimensions, value: "5" }
